@@ -10,8 +10,7 @@ uses
   sqlite3udf in 'sqlite3udf.pas',
   SQLiteWrap in 'SQLiteWrap.pas',
   UDB in 'UDB.pas',
-  UModels in 'UModels.pas',
-  UPatientEdit in 'UPatientEdit.pas' {frmPatientEdit};
+  UPerson in 'UPerson.pas' {frmPerson};
 
 {$R *.res}
 
@@ -21,7 +20,7 @@ begin
   TStyleManager.TrySetStyle('Sapphire Kamri');
   Application.CreateForm(TFrmMain, FrmMain);
   Application.CreateForm(TfrmAbout, frmAbout);
-  Application.CreateForm(TfrmPatientEdit, frmPatientEdit);
+  Application.CreateForm(TfrmPerson, frmPerson);
   Application.Title := '中国网络医院小助手';
   Application.Run;
 end.

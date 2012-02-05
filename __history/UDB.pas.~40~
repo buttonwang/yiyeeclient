@@ -1,0 +1,56 @@
+unit UDB;
+
+interface
+
+uses
+  SQLite3, SQLite3udf, SQLiteWrap, UModels, Vcl.Dialogs;
+
+var
+  Database : TsqliteDatabase;
+  Tab: TSQLiteTable;
+
+  patient: TPatient;
+
+  procedure OpenDB();
+  procedure CloseDB();
+
+  function GetPatient(): TPatient;
+
+implementation
+
+  procedure OpenDB();
+  begin
+    Database := TsqliteDatabase.Create('yiyee.db');
+  end;
+
+  procedure CloseDB();
+  begin
+    Database.Free;
+  end;
+
+  function GetPatient(): TPatient;
+  var
+    patient: TPatient;
+  begin
+    patient := TPatient.Create;
+
+    Tab := Database.GetTable('select id, name, sex, birthday, address, ' +
+      ' tel, mobile, patientCondition, headImage' +
+      ' from patient where id = 2');
+
+    if Tab.Row <> 0 then
+    with patient do
+    begin
+      id := Tab.FieldAsInteger(0);
+      name := Tab.FieldAsString(1);
+      sex := Tab.FieldAsString(2);
+      birthday := Tab.FieldAsString(3);
+      address := Tab.FieldAsString(4);
+      tel := Tab.FieldAsString(5);
+      mobile := Tab.FieldAsString(6);
+      patientCondition := Tab.FieldAsString(7);
+    end;
+
+    result := patient;
+  end;
+end.

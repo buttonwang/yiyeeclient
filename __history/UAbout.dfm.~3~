@@ -1,0 +1,27 @@
+object frmAbout: TfrmAbout
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = #20851#20110#32593#32476#21307#38498#21161#25163
+  ClientHeight = 177
+  ClientWidth = 329
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poOwnerFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object btnOK: TButton
+    Left = 112
+    Top = 112
+    Width = 89
+    Height = 33
+    Caption = #30830#23450
+    TabOrder = 0
+    OnClick = btnOKClick
+  end
+end

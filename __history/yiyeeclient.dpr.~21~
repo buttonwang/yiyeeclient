@@ -20,8 +20,8 @@ begin
   Application.MainFormOnTaskbar := True;
   TStyleManager.TrySetStyle('Sapphire Kamri');
   Application.CreateForm(TFrmMain, FrmMain);
-  Application.CreateForm(TfrmAbout, frmAbout);
-  Application.CreateForm(TfrmPatientEdit, frmPatientEdit);
+  //Application.CreateForm(TfrmAbout, frmAbout);
+  //Application.CreateForm(TfrmPatientEdit, frmPatientEdit);
   Application.Title := '中国网络医院小助手';
   Application.Run;
 end.

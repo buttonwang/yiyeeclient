@@ -1,0 +1,44 @@
+unit UPerson;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TfrmPerson = class(TForm)
+    img1: TImage;
+    pnl1: TPanel;
+    lbl1: TLabel;
+    lbl2: TLabel;
+    lbl3: TLabel;
+    lbl5: TLabel;
+    lblName: TLabel;
+    lblSex: TLabel;
+    lblAge: TLabel;
+    lblPD: TLabel;
+    lbl4: TLabel;
+    lblTel: TLabel;
+    lbl7: TLabel;
+    lblMobile: TLabel;
+    lbl9: TLabel;
+    lblEmail: TLabel;
+    lbl11: TLabel;
+    lblAddress: TLabel;
+    btnSave: TButton;
+    btnClose: TButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPerson: TfrmPerson;
+
+implementation
+
+{$R *.dfm}
+
+end.
