@@ -71,6 +71,7 @@ type
     lblEmail: TLabel;
     lbl11: TLabel;
     lblAddress: TLabel;
+    clbr1: TCoolBar;
     grdpnl1: TGridPanel;
     lv1: TListView;
     lv2: TListView;
@@ -203,10 +204,7 @@ begin
     lblAddress.Caption := address;
     if headImage <> '' then
     begin
-      try
-        img1.Picture.LoadFromFile(headImage);
-      except
-      end;
+      img1.Picture.LoadFromFile(headImage);
     end;
 
   end;

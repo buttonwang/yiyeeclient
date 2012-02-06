@@ -1,0 +1,78 @@
+unit UCase;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls,
+  Vcl.ExtCtrls, Vcl.Grids, Vcl.ValEdit, Vcl.Buttons;
+
+type
+  TfrmCase = class(TForm)
+    grp1: TGroupBox;
+    pgc1: TPageControl;
+    ts1: TTabSheet;
+    ts2: TTabSheet;
+    vlsExam: TValueListEditor;
+    rg1: TRadioGroup;
+    lbl1: TLabel;
+    lbl2: TLabel;
+    lbl3: TLabel;
+    mmo1: TMemo;
+    edtHospital: TEdit;
+    dtpInDocTime: TDateTimePicker;
+    tv1: TTreeView;
+    pnl1: TPanel;
+    grp2: TGroupBox;
+    mmo2: TMemo;
+    vlsLis: TValueListEditor;
+    btnAppend: TBitBtn;
+    btn1: TButton;
+    btn2: TButton;
+    procedure FormCreate(Sender: TObject);
+    procedure btn2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmCase: TfrmCase;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmCase.btn2Click(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TfrmCase.FormCreate(Sender: TObject);
+begin
+  with vlsExam do
+  begin
+    InsertRow('心电图', '正常', true);
+    InsertRow('心血管造影', '', true);
+    InsertRow('B超', '', true);
+    InsertRow('X光检查', '', true);
+    InsertRow('MR/DR', '', true);
+    InsertRow('CT', '', true);
+    InsertRow('核磁', '', true);
+    InsertRow('PED-CI', '', true);
+    InsertRow('病理', '', true);
+    InsertRow('其它', '', true);
+  end;
+
+  with vlsLis do
+  begin
+    InsertRow('总胆红素', '10', true);
+    InsertRow('间接胆红素', '11', true);
+    InsertRow('直接胆红素', '2', true);
+    InsertRow('钠（Na）', '120', true);
+    InsertRow('钙（Ca）', '3', true);
+  end;
+end;
+
+end.

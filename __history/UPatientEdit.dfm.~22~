@@ -23,6 +23,8 @@ object frmPatientEdit: TfrmPatientEdit
     Height = 186
     Align = alClient
     TabOrder = 0
+    ExplicitLeft = 145
+    ExplicitWidth = 446
     object lbl1: TLabel
       Left = 29
       Top = 21

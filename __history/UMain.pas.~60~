@@ -10,7 +10,7 @@ uses
   Vcl.Styles, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.CategoryButtons, Vcl.ButtonGroup,
   Vcl.Tabs, Vcl.DockTabSet, Vcl.Menus, Vcl.ActnList,
   Winapi.ShellAPI, Vcl.ActnColorMaps,
-  UDB, UModels, Vcl.ComCtrls;
+  UDB, UModels;
 
 type
   TFrmMain = class(TForm)
@@ -72,10 +72,6 @@ type
     lbl11: TLabel;
     lblAddress: TLabel;
     grdpnl1: TGridPanel;
-    lv1: TListView;
-    lv2: TListView;
-    lv3: TListView;
-    lv4: TListView;
     procedure Button1Click(Sender: TObject);
     procedure actQuitExecute(Sender: TObject);
     procedure actYiyeeExecute(Sender: TObject);
@@ -203,10 +199,7 @@ begin
     lblAddress.Caption := address;
     if headImage <> '' then
     begin
-      try
-        img1.Picture.LoadFromFile(headImage);
-      except
-      end;
+      img1.Picture.LoadFromFile(headImage);
     end;
 
   end;

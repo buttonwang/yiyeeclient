@@ -2,7 +2,7 @@ object FrmMain: TFrmMain
   Left = 0
   Top = 0
   Caption = '     '#20013#22269#32593#32476#21307#38498#23567#21161#25163
-  ClientHeight = 557
+  ClientHeight = 522
   ClientWidth = 713
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -22,7 +22,7 @@ object FrmMain: TFrmMain
   object spl1: TSplitter
     Left = 145
     Top = 0
-    Height = 557
+    Height = 522
     ExplicitLeft = 360
     ExplicitTop = 224
     ExplicitHeight = 100
@@ -31,7 +31,7 @@ object FrmMain: TFrmMain
     Left = 0
     Top = 0
     Width = 145
-    Height = 557
+    Height = 522
     Align = alLeft
     TabOrder = 0
     ExplicitHeight = 486
@@ -72,7 +72,7 @@ object FrmMain: TFrmMain
     Left = 148
     Top = 0
     Width = 565
-    Height = 557
+    Height = 522
     VertScrollBar.Tracking = True
     Align = alClient
     HeaderFont.Charset = DEFAULT_CHARSET
@@ -82,23 +82,31 @@ object FrmMain: TFrmMain
     HeaderFont.Style = []
     HeaderStyle = hsThemed
     TabOrder = 1
-    ExplicitHeight = 522
     object ctgrypnl3: TCategoryPanel
-      Top = 485
-      Height = 65
+      Top = 461
+      Height = 58
       Caption = #25552#31034#20449#24687
       TabOrder = 0
     end
     object ctgrypnl2: TCategoryPanel
       Top = 147
-      Height = 338
+      Height = 314
       Caption = #30149#21382#20449#24687
       TabOrder = 1
-      object grdpnl1: TGridPanel
+      ExplicitWidth = 546
+      object clbr1: TCoolBar
         Left = 0
         Top = 0
         Width = 561
-        Height = 312
+        Height = 33
+        Bands = <>
+        ExplicitWidth = 544
+      end
+      object grdpnl1: TGridPanel
+        Left = 0
+        Top = 33
+        Width = 561
+        Height = 255
         Align = alClient
         Caption = 'grdpnl1'
         ColumnCollection = <
@@ -137,59 +145,57 @@ object FrmMain: TFrmMain
             Value = 50.000000000000000000
           end>
         ShowCaption = False
-        TabOrder = 0
-        ExplicitHeight = 289
+        TabOrder = 1
+        ExplicitLeft = 143
+        ExplicitTop = 112
+        ExplicitWidth = 185
+        ExplicitHeight = 89
+        DesignSize = (
+          561
+          255)
         object lv1: TListView
-          Left = 1
+          Left = 15
           Top = 1
-          Width = 279
-          Height = 155
-          Align = alClient
+          Width = 250
+          Height = 126
+          Anchors = []
           Columns = <>
           TabOrder = 0
-          ExplicitLeft = 15
-          ExplicitTop = -5
-          ExplicitWidth = 250
-          ExplicitHeight = 143
+          ExplicitLeft = 152
+          ExplicitTop = 56
         end
         object lv2: TListView
-          Left = 280
+          Left = 295
           Top = 1
-          Width = 280
-          Height = 155
-          Align = alClient
+          Width = 250
+          Height = 126
+          Anchors = []
           Columns = <>
           TabOrder = 1
           ExplicitLeft = 152
           ExplicitTop = 56
-          ExplicitWidth = 250
-          ExplicitHeight = 150
         end
         object lv3: TListView
-          Left = 1
-          Top = 156
-          Width = 279
-          Height = 155
-          Align = alClient
+          Left = 15
+          Top = 127
+          Width = 250
+          Height = 127
+          Anchors = []
           Columns = <>
           TabOrder = 2
-          ExplicitLeft = 15
-          ExplicitTop = 158
-          ExplicitWidth = 250
-          ExplicitHeight = 143
+          ExplicitLeft = 152
+          ExplicitTop = 56
         end
         object lv4: TListView
-          Left = 280
-          Top = 156
-          Width = 280
-          Height = 155
-          Align = alClient
+          Left = 295
+          Top = 127
+          Width = 250
+          Height = 127
+          Anchors = []
           Columns = <>
           TabOrder = 3
           ExplicitLeft = 152
           ExplicitTop = 56
-          ExplicitWidth = 250
-          ExplicitHeight = 150
         end
       end
     end

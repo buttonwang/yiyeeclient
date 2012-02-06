@@ -11,8 +11,7 @@ uses
   SQLiteWrap in 'SQLiteWrap.pas',
   UDB in 'UDB.pas',
   UModels in 'UModels.pas',
-  UPatientEdit in 'UPatientEdit.pas' {frmPatientEdit},
-  UCase in 'UCase.pas' {frmCase};
+  UPatientEdit in 'UPatientEdit.pas' {frmPatientEdit};
 
 {$R *.res}
 
@@ -23,7 +22,6 @@ begin
   Application.CreateForm(TFrmMain, FrmMain);
   Application.CreateForm(TfrmAbout, frmAbout);
   Application.CreateForm(TfrmPatientEdit, frmPatientEdit);
-  Application.CreateForm(TfrmCase, frmCase);
   Application.Title := '中国网络医院小助手';
   Application.Run;
 end.

@@ -203,10 +203,7 @@ begin
     lblAddress.Caption := address;
     if headImage <> '' then
     begin
-      try
-        img1.Picture.LoadFromFile(headImage);
-      except
-      end;
+      img1.Picture.LoadFromFile(headImage);
     end;
 
   end;

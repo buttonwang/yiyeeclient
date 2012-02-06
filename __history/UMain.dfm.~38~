@@ -85,9 +85,10 @@ object FrmMain: TFrmMain
     ExplicitHeight = 522
     object ctgrypnl3: TCategoryPanel
       Top = 485
-      Height = 65
+      Height = 57
       Caption = #25552#31034#20449#24687
       TabOrder = 0
+      ExplicitTop = 461
     end
     object ctgrypnl2: TCategoryPanel
       Top = 147

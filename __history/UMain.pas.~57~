@@ -10,15 +10,15 @@ uses
   Vcl.Styles, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.CategoryButtons, Vcl.ButtonGroup,
   Vcl.Tabs, Vcl.DockTabSet, Vcl.Menus, Vcl.ActnList,
   Winapi.ShellAPI, Vcl.ActnColorMaps,
-  UDB, UModels, Vcl.ComCtrls;
+  UDB, UModels;
 
 type
   TFrmMain = class(TForm)
     pnl2: TPanel;
-    btnCaseOut: TButton;
-    btnCaseIn: TButton;
-    btnCaseExam: TButton;
-    btnCaseOther: TButton;
+    btn1: TButton;
+    btn2: TButton;
+    btn3: TButton;
+    btn4: TButton;
     mmMain: TMainMenu;
     N1: TMenuItem;
     N2: TMenuItem;
@@ -71,11 +71,6 @@ type
     lblEmail: TLabel;
     lbl11: TLabel;
     lblAddress: TLabel;
-    grdpnl1: TGridPanel;
-    lv1: TListView;
-    lv2: TListView;
-    lv3: TListView;
-    lv4: TListView;
     procedure Button1Click(Sender: TObject);
     procedure actQuitExecute(Sender: TObject);
     procedure actYiyeeExecute(Sender: TObject);
@@ -88,7 +83,6 @@ type
     procedure actCaseInExecute(Sender: TObject);
     procedure actCaseOutExecute(Sender: TObject);
     procedure actCaseExamExecute(Sender: TObject);
-    procedure actCaseOtherExecute(Sender: TObject);
   private
     { Private declarations }
     procedure  changeSkill(index: Byte);
@@ -118,11 +112,6 @@ begin
 end;
 
 procedure TFrmMain.actCaseInExecute(Sender: TObject);
-begin
-  frmCase.ShowModal;
-end;
-
-procedure TFrmMain.actCaseOtherExecute(Sender: TObject);
 begin
   frmCase.ShowModal;
 end;
@@ -203,10 +192,7 @@ begin
     lblAddress.Caption := address;
     if headImage <> '' then
     begin
-      try
-        img1.Picture.LoadFromFile(headImage);
-      except
-      end;
+      img1.Picture.LoadFromFile(headImage);
     end;
 
   end;

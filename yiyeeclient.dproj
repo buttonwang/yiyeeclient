@@ -101,6 +101,10 @@
 			<DCCReference Include="UPatientEdit.pas">
 				<Form>frmPatientEdit</Form>
 			</DCCReference>
+			<DCCReference Include="UCase.pas">
+				<Form>frmCase</Form>
+				<FormType>dfm</FormType>
+			</DCCReference>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>
