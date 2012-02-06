@@ -172,11 +172,6 @@ begin
     lblMobile.Caption := mobile;
     lblEmail.Caption := email;
     lblAddress.Caption := address;
-    if headImage <> '' then
-    begin
-      img1.Picture.LoadFromFile(headImage);
-    end;
-
   end;
 end;
 

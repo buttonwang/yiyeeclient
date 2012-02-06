@@ -103,7 +103,6 @@ begin
   begin
     //ShowMessage(dlgOpenPic1.FileName);
     img1.Picture.LoadFromFile(dlgOpenPic1.FileName);
-    patient.headImage := dlgOpenPic1.FileName;
   end;
 end;
 

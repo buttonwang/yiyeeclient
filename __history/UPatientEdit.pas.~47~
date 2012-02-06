@@ -71,10 +71,6 @@ begin
     edtMobile.Text := mobile;
     edtEmail.Text := email;
     edtAddress.Text := address;
-    if headImage <> '' then
-    begin
-      img1.Picture.LoadFromFile(headImage);
-    end;
   end;
 end;
 
@@ -101,9 +97,8 @@ procedure TfrmPatientEdit.btnChooseFileClick(Sender: TObject);
 begin
   if dlgOpenPic1.Execute(Application.Handle) then
   begin
-    //ShowMessage(dlgOpenPic1.FileName);
+    ShowMessage(dlgOpenPic1.FileName);
     img1.Picture.LoadFromFile(dlgOpenPic1.FileName);
-    patient.headImage := dlgOpenPic1.FileName;
   end;
 end;
 

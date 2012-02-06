@@ -104,7 +104,6 @@ object FrmMain: TFrmMain
         Width = 113
         Height = 121
         Align = alLeft
-        Stretch = True
         ExplicitHeight = 131
       end
       object pnl1: TPanel

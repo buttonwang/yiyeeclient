@@ -174,7 +174,7 @@ begin
     lblAddress.Caption := address;
     if headImage <> '' then
     begin
-      img1.Picture.LoadFromFile(headImage);
+
     end;
 
   end;

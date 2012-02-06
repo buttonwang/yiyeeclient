@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls,
   Data.Bind.EngExt, Vcl.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs,
-  Vcl.Bind.Editors, Data.Bind.Components, Vcl.ExtDlgs, Vcl.Imaging.jpeg;
+  Vcl.Bind.Editors, Data.Bind.Components;
 
 type
   TfrmPatientEdit = class(TForm)
@@ -32,11 +32,9 @@ type
     edtName: TEdit;
     pnl2: TPanel;
     btnChooseFile: TButton;
-    dlgOpenPic1: TOpenPictureDialog;
     procedure btnCloseClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
-    procedure btnChooseFileClick(Sender: TObject);
   private
     { Private declarations }
     procedure ShowPatient();
@@ -71,10 +69,6 @@ begin
     edtMobile.Text := mobile;
     edtEmail.Text := email;
     edtAddress.Text := address;
-    if headImage <> '' then
-    begin
-      img1.Picture.LoadFromFile(headImage);
-    end;
   end;
 end;
 
@@ -95,16 +89,6 @@ begin
   end;
 
   Close;
-end;
-
-procedure TfrmPatientEdit.btnChooseFileClick(Sender: TObject);
-begin
-  if dlgOpenPic1.Execute(Application.Handle) then
-  begin
-    //ShowMessage(dlgOpenPic1.FileName);
-    img1.Picture.LoadFromFile(dlgOpenPic1.FileName);
-    patient.headImage := dlgOpenPic1.FileName;
-  end;
 end;
 
 procedure TfrmPatientEdit.btnCloseClick(Sender: TObject);

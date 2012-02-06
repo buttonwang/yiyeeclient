@@ -62,7 +62,6 @@ begin
     tel := Tab.FieldAsString(5);
     mobile := Tab.FieldAsString(6);
     patientCondition := Tab.FieldAsString(7);
-    headImage := Tab.FieldAsString(8);
   end;
 end;
 
@@ -80,7 +79,7 @@ procedure TPatient.Update;
 var sql: string;
 begin
   sql := 'update patient set name="#name", sex="#sex", birthday="#birthday", ' +
-         'tel="#tel", mobile="#mobile", email="#email", headImage="#headImage", ' +
+         'tel="#tel", mobile="#mobile", email="#email", ' +
          'patientCondition="#patientCondition", address="#address"';
   sql := StringReplace(sql, '#name', patient.name, []);
   sql := StringReplace(sql, '#birthday', patient.birthday, []);
@@ -88,7 +87,6 @@ begin
   sql := StringReplace(sql, '#tel', patient.tel, []);
   sql := StringReplace(sql, '#mobile', patient.mobile, []);
   sql := StringReplace(sql, '#email', patient.email, []);
-  sql := StringReplace(sql, '#headImage', patient.headImage, []);
   sql := StringReplace(sql, '#patientCondition', patient.patientCondition, []);
   sql := StringReplace(sql, '#address', patient.address, []);
   Database.ExecSQL(sql);

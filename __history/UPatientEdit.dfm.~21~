@@ -24501,13 +24501,9 @@ object frmPatientEdit: TfrmPatientEdit
   end
   object dlgOpenPic1: TOpenPictureDialog
     Filter = 
-      'All(*.gif;*.png;*.jpg;*.jpeg;*.bmp;*.tif;*.tiff;*.ico;*.emf;*.wm' +
-      'f)|*.gif;*.png;*.jpg;*.jpeg;*.bmp;*.tif;*.tiff;*.ico;*.emf;*.wmf' +
-      '|GIF Image (*.gif)|*.gif|Portable Network Graphics (*.png)|*.png' +
-      '|JPEG Image File (*.jpg)|*.jpg|JPEG Image File (*.jpeg)|*.jpeg|B' +
-      'itmaps (*.bmp)|*.bmp|TIFF Images (*.tif)|*.tif|TIFF Images (*.ti' +
-      'ff)|*.tiff|Icons (*.ico)|*.ico|Enhanced Metafiles (*.emf)|*.emf|' +
-      'Metafiles (*.wmf)|*.wmf'
+      'All (*.gif;*.png;*.jpg;*.jpeg;*.bmp;*.tif;*.tiff;*.ico;*.emf;*.w' +
+      'mf)|*.gif;*.png;*.jpg;*.jpeg;*.bmp;*.tif;*.tiff;*.ico;*.emf;*.wm' +
+      'f'
     Left = 176
     Top = 136
   end
