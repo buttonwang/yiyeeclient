@@ -34,7 +34,6 @@ object FrmMain: TFrmMain
     Height = 557
     Align = alLeft
     TabOrder = 0
-    ExplicitHeight = 486
     object btnCaseOut: TButton
       Left = 11
       Top = 92
@@ -82,7 +81,6 @@ object FrmMain: TFrmMain
     HeaderFont.Style = []
     HeaderStyle = hsThemed
     TabOrder = 1
-    ExplicitHeight = 522
     object ctgrypnl3: TCategoryPanel
       Top = 485
       Height = 65
@@ -138,7 +136,6 @@ object FrmMain: TFrmMain
           end>
         ShowCaption = False
         TabOrder = 0
-        ExplicitHeight = 289
         object lv1: TListView
           Left = 1
           Top = 1
@@ -147,10 +144,6 @@ object FrmMain: TFrmMain
           Align = alClient
           Columns = <>
           TabOrder = 0
-          ExplicitLeft = 15
-          ExplicitTop = -5
-          ExplicitWidth = 250
-          ExplicitHeight = 143
         end
         object lv2: TListView
           Left = 280
@@ -160,10 +153,6 @@ object FrmMain: TFrmMain
           Align = alClient
           Columns = <>
           TabOrder = 1
-          ExplicitLeft = 152
-          ExplicitTop = 56
-          ExplicitWidth = 250
-          ExplicitHeight = 150
         end
         object lv3: TListView
           Left = 1
@@ -173,10 +162,6 @@ object FrmMain: TFrmMain
           Align = alClient
           Columns = <>
           TabOrder = 2
-          ExplicitLeft = 15
-          ExplicitTop = 158
-          ExplicitWidth = 250
-          ExplicitHeight = 143
         end
         object lv4: TListView
           Left = 280
@@ -186,10 +171,6 @@ object FrmMain: TFrmMain
           Align = alClient
           Columns = <>
           TabOrder = 3
-          ExplicitLeft = 152
-          ExplicitTop = 56
-          ExplicitWidth = 250
-          ExplicitHeight = 150
         end
       end
     end
@@ -198,7 +179,6 @@ object FrmMain: TFrmMain
       Height = 147
       Caption = #20010#20154#20449#24687
       TabOrder = 2
-      ExplicitWidth = 546
       object img1: TImage
         Left = 0
         Top = 0
@@ -215,7 +195,6 @@ object FrmMain: TFrmMain
         Height = 121
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 431
         object lbl1: TLabel
           Left = 16
           Top = 24
