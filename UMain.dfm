@@ -1,8 +1,8 @@
 object FrmMain: TFrmMain
   Left = 0
   Top = 0
-  Caption = '     '#20013#22269#32593#32476#21307#38498#23567#21161#25163
-  ClientHeight = 557
+  Caption = #20013#22269#32593#32476#20445#20581#38498
+  ClientHeight = 564
   ClientWidth = 713
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -22,7 +22,7 @@ object FrmMain: TFrmMain
   object spl1: TSplitter
     Left = 145
     Top = 0
-    Height = 557
+    Height = 564
     ExplicitLeft = 360
     ExplicitTop = 224
     ExplicitHeight = 100
@@ -31,7 +31,7 @@ object FrmMain: TFrmMain
     Left = 0
     Top = 0
     Width = 145
-    Height = 557
+    Height = 564
     Align = alLeft
     TabOrder = 0
     object btnCaseOut: TButton
@@ -71,7 +71,7 @@ object FrmMain: TFrmMain
     Left = 148
     Top = 0
     Width = 565
-    Height = 557
+    Height = 564
     VertScrollBar.Tracking = True
     Align = alClient
     HeaderFont.Charset = DEFAULT_CHARSET
@@ -84,7 +84,7 @@ object FrmMain: TFrmMain
     object ctgrypnl3: TCategoryPanel
       Top = 485
       Height = 65
-      Caption = #25552#31034#20449#24687
+      Caption = #30149#24535#20449#24687
       TabOrder = 0
     end
     object ctgrypnl2: TCategoryPanel
@@ -203,25 +203,26 @@ object FrmMain: TFrmMain
           Caption = #22995#21517#65306
         end
         object lbl2: TLabel
-          Left = 112
+          Left = 143
           Top = 24
           Width = 36
           Height = 13
           Caption = #24615#21035#65306
         end
         object lbl3: TLabel
-          Left = 184
+          Left = 223
           Top = 24
           Width = 36
           Height = 13
           Caption = #24180#40836#65306
         end
         object lbl5: TLabel
-          Left = 261
-          Top = 24
+          Left = 361
+          Top = 78
           Width = 36
           Height = 13
           Caption = #30149#21490#65306
+          Visible = False
         end
         object lblName: TLabel
           Left = 52
@@ -231,25 +232,26 @@ object FrmMain: TFrmMain
           Caption = #26410#35774#32622
         end
         object lblSex: TLabel
-          Left = 147
+          Left = 178
           Top = 24
           Width = 36
           Height = 13
           Caption = #26410#35774#32622
         end
         object lblAge: TLabel
-          Left = 216
+          Left = 255
           Top = 24
           Width = 36
           Height = 13
           Caption = #26410#35774#32622
         end
         object lblPD: TLabel
-          Left = 298
-          Top = 24
+          Left = 398
+          Top = 78
           Width = 36
           Height = 13
           Caption = #26410#35774#32622
+          Visible = False
         end
         object lbl4: TLabel
           Left = 16
@@ -266,28 +268,28 @@ object FrmMain: TFrmMain
           Caption = #26410#35774#32622
         end
         object lbl7: TLabel
-          Left = 144
+          Left = 143
           Top = 51
           Width = 36
           Height = 13
           Caption = #25163#26426#65306
         end
         object lblMobile: TLabel
-          Left = 179
+          Left = 178
           Top = 51
           Width = 36
           Height = 13
           Caption = #26410#35774#32622
         end
         object lbl9: TLabel
-          Left = 261
+          Left = 300
           Top = 51
           Width = 60
           Height = 13
           Caption = #30005#23376#37038#31665#65306
         end
         object lblEmail: TLabel
-          Left = 322
+          Left = 361
           Top = 50
           Width = 36
           Height = 13
@@ -307,6 +309,20 @@ object FrmMain: TFrmMain
           Height = 13
           Caption = #26410#35774#32622
         end
+        object lbl6: TLabel
+          Left = 324
+          Top = 24
+          Width = 36
+          Height = 13
+          Caption = #34880#22411#65306
+        end
+        object lblblood: TLabel
+          Left = 361
+          Top = 24
+          Width = 36
+          Height = 13
+          Caption = #26410#35774#32622
+        end
       end
     end
   end
@@ -317,7 +333,7 @@ object FrmMain: TFrmMain
     Left = 80
     Top = 16
     object N1: TMenuItem
-      Caption = #30149#21382#31649#29702
+      Caption = #30149#21382#24405#20837
       object N2: TMenuItem
         Action = actCaseOut
       end
@@ -412,7 +428,7 @@ object FrmMain: TFrmMain
       OnExecute = actSkinExecute
     end
     object actYiyee: TAction
-      Caption = #20013#22269#32593#32476#21307#38498
+      Caption = #20013#22269#32593#32476#20445#20581#38498
       OnExecute = actYiyeeExecute
     end
     object actAbout: TAction

@@ -76,6 +76,8 @@ type
     lv2: TListView;
     lv3: TListView;
     lv4: TListView;
+    lbl6: TLabel;
+    lblblood: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure actQuitExecute(Sender: TObject);
     procedure actYiyeeExecute(Sender: TObject);
@@ -105,7 +107,7 @@ implementation
 
 {$R *.dfm}
 
-uses UAbout, UPatientEdit, UCase;
+uses UAbout, UPatientEdit, UMRecord, UConst;
 
 procedure TFrmMain.actAboutExecute(Sender: TObject);
 begin
@@ -114,22 +116,22 @@ end;
 
 procedure TFrmMain.actCaseExamExecute(Sender: TObject);
 begin
-  frmCase.ShowModal;
+  frmMedicalEecord.ShowModal;
 end;
 
 procedure TFrmMain.actCaseInExecute(Sender: TObject);
 begin
-  frmCase.ShowModal;
+  frmMedicalEecord.ShowModal;
 end;
 
 procedure TFrmMain.actCaseOtherExecute(Sender: TObject);
 begin
-  frmCase.ShowModal;
+  frmMedicalEecord.ShowModal;
 end;
 
 procedure TFrmMain.actCaseOutExecute(Sender: TObject);
 begin
-  frmCase.ShowModal;
+  frmMedicalEecord.ShowModal;
 end;
 
 procedure TFrmMain.actPatientConfigExecute(Sender: TObject);
@@ -155,7 +157,7 @@ end;
 
 procedure TFrmMain.actYiyeeExecute(Sender: TObject);
 begin
-  ShellExecute(Handle, 'open', 'www.zgwlyy.com', nil, nil, SW_SHOWNORMAL);
+  ShellExecute(Handle, 'open', PChar(ApplicationUrl), nil, nil, SW_SHOWNORMAL);
 end;
 
 procedure TFrmMain.Button1Click(Sender: TObject);
@@ -190,6 +192,8 @@ end;
 
 procedure TFrmMain.ShowPatient;
 begin
+  caption := ApplicationName;
+
   patient := TPatient.Create;
   with patient do
   begin
@@ -200,6 +204,7 @@ begin
     lblTel.Caption := tel;
     lblMobile.Caption := mobile;
     lblEmail.Caption := email;
+    lblblood.Caption := blood;
     lblAddress.Caption := address;
     if headImage <> '' then
     begin

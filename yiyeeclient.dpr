@@ -12,7 +12,9 @@ uses
   UDB in 'UDB.pas',
   UModels in 'UModels.pas',
   UPatientEdit in 'UPatientEdit.pas' {frmPatientEdit},
-  UCase in 'UCase.pas' {frmCase};
+  UMRecord in 'UMRecord.pas' {frmMedicalEecord},
+  UConst in 'UConst.pas',
+  UCRecord in 'UCRecord.pas' {Form1};
 
 {$R *.res}
 
@@ -23,7 +25,8 @@ begin
   Application.CreateForm(TFrmMain, FrmMain);
   Application.CreateForm(TfrmAbout, frmAbout);
   Application.CreateForm(TfrmPatientEdit, frmPatientEdit);
-  Application.CreateForm(TfrmCase, frmCase);
-  Application.Title := '中国网络医院小助手';
+  Application.CreateForm(TfrmMedicalEecord, frmMedicalEecord);
+  Application.CreateForm(TForm1, Form1);
+  Application.Title := ApplicationName;
   Application.Run;
 end.

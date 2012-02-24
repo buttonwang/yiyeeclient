@@ -33,6 +33,8 @@ type
     pnl2: TPanel;
     btnChooseFile: TButton;
     dlgOpenPic1: TOpenPictureDialog;
+    lbl6: TLabel;
+    cbbblood: TComboBox;
     procedure btnCloseClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
@@ -70,6 +72,7 @@ begin
     edtTel.Text := tel;
     edtMobile.Text := mobile;
     edtEmail.Text := email;
+    cbbblood.Text := blood;
     edtAddress.Text := address;
     if headImage <> '' then
     begin
@@ -92,6 +95,7 @@ begin
     tel := edtTel.Text;
     mobile := edtMobile.Text;
     email := edtEmail.Text;
+    blood := cbbblood.Text;
     address := edtAddress.Text;
 
     Update();

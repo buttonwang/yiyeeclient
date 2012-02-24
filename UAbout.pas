@@ -13,10 +13,11 @@ type
     lbl1: TLabel;
     lbl2: TLabel;
     lbl3: TLabel;
-    lbl4: TLabel;
-    lnklbl1: TLinkLabel;
+    lbltitle: TLabel;
+    lnkUrl: TLinkLabel;
     procedure btnOKClick(Sender: TObject);
-    procedure lnklbl1Click(Sender: TObject);
+    procedure lnkUrlClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,14 +31,23 @@ implementation
 
 {$R *.dfm}
 
+uses UConst;
+
 procedure TfrmAbout.btnOKClick(Sender: TObject);
 begin
   frmAbout.Close;
 end;
 
-procedure TfrmAbout.lnklbl1Click(Sender: TObject);
+procedure TfrmAbout.FormCreate(Sender: TObject);
 begin
-  ShellExecute(Handle, 'open', 'www.zgwlyy.com', nil, nil, SW_SHOWNORMAL);
+  caption := '¹ØÓÚ' + ApplicationName;
+  lbltitle.Caption := ApplicationName;
+  lnkUrl.Caption  := '<a href="http://' + ApplicationUrl + '">' + ApplicationUrl + '</a>';
+end;
+
+procedure TfrmAbout.lnkUrlClick(Sender: TObject);
+begin
+  ShellExecute(Handle, 'open', PChar(ApplicationUrl), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

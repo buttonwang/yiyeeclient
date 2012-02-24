@@ -2,7 +2,7 @@ object frmAbout: TfrmAbout
   Left = 0
   Top = 0
   BorderStyle = bsDialog
-  Caption = #20851#20110#32593#32476#21307#38498#21161#25163
+  Caption = #20851#20110#20013#22269#32593#32476#20445#20581#38498
   ClientHeight = 222
   ClientWidth = 329
   Color = clBtnFace
@@ -13,21 +13,22 @@ object frmAbout: TfrmAbout
   Font.Style = []
   OldCreateOrder = False
   Position = poOwnerFormCenter
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object lbl1: TLabel
     Left = 24
     Top = 97
-    Width = 249
-    Height = 21
+    Width = 232
+    Height = 26
     Caption = #29256#26435#25152#26377' @2012 '#21271#20140#29233#29983#35850#32852#31185#25216#26377#38480#20844#21496#13#10
   end
   object lbl2: TLabel
     Left = 24
     Top = 65
-    Width = 168
+    Width = 192
     Height = 13
-    Caption = #27426#36814#20351#29992#20013#22269#32593#32476#21307#38498#21161#25163#24037#20855
+    Caption = #27426#36814#20351#29992#20013#22269#32593#32476#20445#20581#38498#23458#25143#31471#24037#20855
   end
   object lbl3: TLabel
     Left = 224
@@ -42,7 +43,7 @@ object frmAbout: TfrmAbout
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object lbl4: TLabel
+  object lbltitle: TLabel
     Left = 24
     Top = 16
     Width = 188
@@ -66,14 +67,14 @@ object frmAbout: TfrmAbout
     TabOrder = 0
     OnClick = btnOKClick
   end
-  object lnklbl1: TLinkLabel
+  object lnkUrl: TLinkLabel
     Left = 24
     Top = 124
-    Width = 104
+    Width = 109
     Height = 21
-    Caption = '<a href="http://www.zgwlyy.com">www.zgwlyy.com</a> '
+    Caption = '<a href="http://www.zgwlyy.com">www.zgwlbjy.com</a> '
     TabOrder = 1
     UseVisualStyle = True
-    OnClick = lnklbl1Click
+    OnClick = lnkUrlClick
   end
 end

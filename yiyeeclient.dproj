@@ -101,8 +101,13 @@
 			<DCCReference Include="UPatientEdit.pas">
 				<Form>frmPatientEdit</Form>
 			</DCCReference>
-			<DCCReference Include="UCase.pas">
-				<Form>frmCase</Form>
+			<DCCReference Include="UMRecord.pas">
+				<Form>frmMedicalEecord</Form>
+				<FormType>dfm</FormType>
+			</DCCReference>
+			<DCCReference Include="UConst.pas"/>
+			<DCCReference Include="UCRecord.pas">
+				<Form>Form1</Form>
 				<FormType>dfm</FormType>
 			</DCCReference>
 			<BuildConfiguration Include="Release">
