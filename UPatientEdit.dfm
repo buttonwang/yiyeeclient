@@ -3,7 +3,7 @@ object frmPatientEdit: TfrmPatientEdit
   Top = 0
   BorderStyle = bsSingle
   Caption = #20010#20154#20449#24687#20462#25913
-  ClientHeight = 180
+  ClientHeight = 189
   ClientWidth = 585
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -20,9 +20,9 @@ object frmPatientEdit: TfrmPatientEdit
     Left = 124
     Top = 0
     Width = 461
-    Height = 180
+    Height = 189
     Align = alClient
-    TabOrder = 0
+    TabOrder = 1
     object lbl1: TLabel
       Left = 29
       Top = 21
@@ -48,7 +48,7 @@ object frmPatientEdit: TfrmPatientEdit
       Left = 29
       Top = 233
       Width = 36
-      Height = 17
+      Height = 13
       Caption = #30149#21490#65306
       Visible = False
     end
@@ -187,9 +187,9 @@ object frmPatientEdit: TfrmPatientEdit
     Left = 0
     Top = 0
     Width = 124
-    Height = 180
+    Height = 189
     Align = alLeft
-    TabOrder = 1
+    TabOrder = 0
     object img1: TImage
       Left = 1
       Top = 1
@@ -24506,6 +24506,7 @@ object frmPatientEdit: TfrmPatientEdit
         7A7EECA953E404AFA0063FA8FB513DD4B77B889934A490CEE4F98393814E18E1
         F2E92DC95B5DB45B5B822793343C16B9E1E74E14073C78F5FFD9}
       Stretch = True
+      OnDblClick = img1DblClick
       ExplicitWidth = 147
     end
     object btnChooseFile: TButton

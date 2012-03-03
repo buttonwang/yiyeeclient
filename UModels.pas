@@ -3,7 +3,7 @@ unit UModels;
 interface
 
 uses
-  System.SysUtils, System.DateUtils ;
+  System.SysUtils, System.DateUtils, System.Classes, Vcl.Dialogs;
 
 type
   TPatient = class
@@ -21,13 +21,16 @@ type
     patientCondition: string;
     headImage: string;
     address: string;
-
+    photo: TMemoryStream;
 
     constructor Create();
+    destructor Destroy; override;
 
     procedure Update();
     procedure Insert();
     procedure Delete();
+
+    procedure Update2();
 
     property age: string read FAge;
   end;
@@ -46,11 +49,14 @@ begin
 end;
 
 constructor TPatient.Create;
+var s: TMemoryStream;
 begin
   id := 0;
 
+  //photo := TMemoryStream.Create;
+
   Tab := Database.GetTable('select id, name, sex, blood, birthday, address, ' +
-      ' tel, mobile, patientCondition, headImage' +
+      ' tel, mobile, patientCondition, headImage, photo' +
       ' from patient where id <> 0');
 
   if Tab.Row <> 0 then
@@ -65,7 +71,18 @@ begin
     mobile := Tab.FieldAsString(7);
     patientCondition := Tab.FieldAsString(8);
     headImage := Tab.FieldAsString(9);
+    s := Tab.FieldAsBlob(10);
+    s.Position := 0;
+    photo := s;
+    //ShowMessage(IntToStr(s.Size));
   end;
+end;
+
+destructor TPatient.Destroy;
+begin
+  photo.Free;
+
+  inherited;
 end;
 
 procedure TPatient.Delete;
@@ -78,7 +95,7 @@ begin
 
 end;
 
-procedure TPatient.Update;
+procedure TPatient.Update2;
 var sql: string;
 begin
   sql := 'update patient set name="#name", sex="#sex", birthday="#birthday", blood="#blood", ' +
@@ -95,6 +112,57 @@ begin
   sql := StringReplace(sql, '#patientCondition', patient.patientCondition, []);
   sql := StringReplace(sql, '#address', patient.address, []);
   Database.ExecSQL(sql);
+end;
+
+procedure TPatient.Update();
+var
+  sql: string;
+  fs: TFileStream;
+  buffer: TBytes;
+  len: Integer;
+begin
+  sql := 'update patient set name=:name, sex=:sex, birthday=:birthday, blood=:blood, ' +
+         'tel=:tel, mobile=:mobile, email=:email, headImage=:headImage, ' +
+         'patientCondition=:patientCondition, address=:address, photo=:photo ' +
+         'where id = :id';
+  //sql := StringReplace(sql, '#name', patient.name, []);
+  //sql := StringReplace(sql, '#birthday', patient.birthday, []);
+  //sql := StringReplace(sql, '#sex', patient.sex, []);
+  //sql := StringReplace(sql, '#blood', patient.blood, []);
+  //sql := StringReplace(sql, '#tel', patient.tel, []);
+  //sql := StringReplace(sql, '#mobile', patient.mobile, []);
+  //sql := StringReplace(sql, '#email', patient.email, []);
+  //sql := StringReplace(sql, '#headImage', patient.headImage, []);
+  //sql := StringReplace(sql, '#patientCondition', patient.patientCondition, []);
+  //sql := StringReplace(sql, '#address', patient.address, []);
+
+  //fs:= TFileStream.Create(patient.headImage, fmOpenRead);
+  //fs.Position := 0;
+
+  len := patient.photo.Size;
+  patient.photo.Position := 0;
+  setlength(buffer, len);
+  patient.photo.ReadBuffer(buffer[0], len);
+
+  Database.AddParamInt(':id', patient.id);
+  Database.AddParamText(':name', patient.name);
+  Database.AddParamText(':birthday', patient.birthday);
+  Database.AddParamText(':sex', patient.sex);
+  Database.AddParamText(':blood', patient.blood);
+  Database.AddParamText(':tel', patient.tel);
+  Database.AddParamText(':mobile', patient.mobile);
+  Database.AddParamText(':email', patient.email);
+  Database.AddParamText(':headImage', patient.headImage);
+  Database.AddParamText(':patientCondition', patient.patientCondition);
+  Database.AddParamText(':address', patient.address);
+  Database.AddParamBlobPtr(':photo', Pointer(buffer), len);
+
+  try
+    Database.ExecSQL(sql);
+  finally
+    patient.photo.Position := 0;
+    buffer := nil;
+  end;
 end;
 
 end.

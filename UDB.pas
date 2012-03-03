@@ -14,6 +14,8 @@ var
   procedure OpenDB();
   procedure CloseDB();
 
+  procedure InitDB();
+
 
 implementation
 
@@ -28,4 +30,13 @@ implementation
     Database.Free;
   end;
 
+  procedure InitDB();
+  begin
+    Tab := Database.GetTable('select 1 from patient');
+    if Tab.Row < 1 then
+    begin
+      Database.ExecSQL('insert into patient(id, name, birthday) ' +
+          'values (1, "ÇëÊäÈëÄúµÄÃû×Ö", "2000-01-01")');
+    end;
+  end;
 end.

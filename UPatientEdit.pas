@@ -39,6 +39,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
     procedure btnChooseFileClick(Sender: TObject);
+    procedure img1DblClick(Sender: TObject);
   private
     { Private declarations }
     procedure ShowPatient();
@@ -61,6 +62,11 @@ begin
   ShowPatient();
 end;
 
+procedure TfrmPatientEdit.img1DblClick(Sender: TObject);
+begin
+  btnChooseFile.Click;
+end;
+
 procedure TfrmPatientEdit.ShowPatient;
 begin
   with patient do
@@ -74,13 +80,16 @@ begin
     edtEmail.Text := email;
     cbbblood.Text := blood;
     edtAddress.Text := address;
-    if headImage <> '' then
-    begin
-      try
-        img1.Picture.LoadFromFile(headImage);
-      except
-      end;
-    end;
+    photo.Position := 0;
+    if photo.Size > 0 then
+      img1.Picture.Graphic.LoadFromStream(photo);
+    //    if headImage <> '' then
+    //    begin
+    //      try
+    //        img1.Picture.LoadFromFile(headImage);
+    //      except
+    //      end;
+    //    end;
   end;
 end;
 
@@ -98,6 +107,9 @@ begin
     blood := cbbblood.Text;
     address := edtAddress.Text;
 
+    patient.photo.Clear;      //if delete then picture will be merge.
+    img1.Picture.Graphic.SaveToStream(patient.photo);
+
     Update();
   end;
 
@@ -108,7 +120,6 @@ procedure TfrmPatientEdit.btnChooseFileClick(Sender: TObject);
 begin
   if dlgOpenPic1.Execute(Application.Handle) then
   begin
-    //ShowMessage(dlgOpenPic1.FileName);
     img1.Picture.LoadFromFile(dlgOpenPic1.FileName);
     patient.headImage := dlgOpenPic1.FileName;
   end;

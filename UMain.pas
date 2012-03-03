@@ -10,7 +10,7 @@ uses
   Vcl.Styles, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.CategoryButtons, Vcl.ButtonGroup,
   Vcl.Tabs, Vcl.DockTabSet, Vcl.Menus, Vcl.ActnList,
   Winapi.ShellAPI, Vcl.ActnColorMaps,
-  UDB, UModels, Vcl.ComCtrls;
+  UDB, UModels, Vcl.ComCtrls, Vcl.Imaging.jpeg;
 
 type
   TFrmMain = class(TForm)
@@ -91,6 +91,7 @@ type
     procedure actCaseOutExecute(Sender: TObject);
     procedure actCaseExamExecute(Sender: TObject);
     procedure actCaseOtherExecute(Sender: TObject);
+    procedure img1DblClick(Sender: TObject);
   private
     { Private declarations }
     procedure  changeSkill(index: Byte);
@@ -180,6 +181,11 @@ begin
   ShowPatient;
 end;
 
+procedure TFrmMain.img1DblClick(Sender: TObject);
+begin
+  actPatientConfig.Execute();
+end;
+
 procedure TFrmMain.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   CloseDB();
@@ -188,15 +194,17 @@ end;
 procedure TFrmMain.FormCreate(Sender: TObject);
 begin
   OpenDB();
+  InitDB();
 end;
 
 procedure TFrmMain.ShowPatient;
 begin
   caption := ApplicationName;
 
-  patient := TPatient.Create;
   with patient do
   begin
+    if patient=nil then patient := TPatient.Create();
+
     lblName.Caption := name;
     lblSex.Caption := sex;
     lblAge.Caption := age;
@@ -206,14 +214,16 @@ begin
     lblEmail.Caption := email;
     lblblood.Caption := blood;
     lblAddress.Caption := address;
-    if headImage <> '' then
-    begin
-      try
-        img1.Picture.LoadFromFile(headImage);
-      except
-      end;
-    end;
-
+    photo.Position := 0;
+    if photo.Size > 0 then
+      img1.Picture.Graphic.LoadFromStream(photo);
+    //    if headImage <> '' then
+    //    begin
+    //      try
+    //        img1.Picture.LoadFromFile(headImage);
+    //      except
+    //      end;
+    //    end;
   end;
 end;
 

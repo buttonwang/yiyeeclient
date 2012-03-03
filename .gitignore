@@ -3,3 +3,5 @@ __history/
 *.exe
 *.dcu
 *~
+Win32/Debug/yiyeeclient.exe
+Win32/Debug/*.dcu

@@ -103,7 +103,7 @@ object frmMedicalEecord: TfrmMedicalEecord
       Top = 122
       Width = 81
       Height = 30
-      Caption = #36864#20986
+      Caption = #20851#38381
       TabOrder = 6
       OnClick = btn2Click
     end
