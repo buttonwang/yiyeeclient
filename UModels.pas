@@ -6,7 +6,14 @@ uses
   System.SysUtils, System.DateUtils, System.Classes, Vcl.Dialogs;
 
 type
-  TPatient = class
+  TDomain = class
+  public
+    procedure Update(); virtual; abstract;
+    procedure Insert(); virtual; abstract;
+    procedure Delete(); virtual; abstract;
+  end;
+
+  TPatient = class(TDomain)
   private
     function FAge(): String;
   public
@@ -26,13 +33,37 @@ type
     constructor Create();
     destructor Destroy; override;
 
-    procedure Update();
-    procedure Insert();
-    procedure Delete();
+    procedure Update(); override;
+    procedure Insert(); override;
+    procedure Delete(); override;
 
     procedure Update2();
 
     property age: string read FAge;
+  end;
+
+  TMedicalRecord = class(TDomain)
+  public
+    id: Integer;
+    patientId: Integer;
+    mrType: Integer;    //1: 门诊病历 2：住院病历 3：体检病历 4：其他病历
+    birthday: string;
+    hospital: string;
+    mrRecord: string;
+    treatment: string;
+    seeTime: string;
+    publishTime: string;
+    updateTime: string;
+
+    constructor Create(id: Integer);
+
+    procedure Update(); override;
+    procedure Insert(); override;
+    procedure Delete(); override;
+
+    procedure One();
+    procedure Find();
+
   end;
 
 implementation
@@ -81,7 +112,6 @@ end;
 destructor TPatient.Destroy;
 begin
   photo.Free;
-
   inherited;
 end;
 
@@ -125,19 +155,6 @@ begin
          'tel=:tel, mobile=:mobile, email=:email, headImage=:headImage, ' +
          'patientCondition=:patientCondition, address=:address, photo=:photo ' +
          'where id = :id';
-  //sql := StringReplace(sql, '#name', patient.name, []);
-  //sql := StringReplace(sql, '#birthday', patient.birthday, []);
-  //sql := StringReplace(sql, '#sex', patient.sex, []);
-  //sql := StringReplace(sql, '#blood', patient.blood, []);
-  //sql := StringReplace(sql, '#tel', patient.tel, []);
-  //sql := StringReplace(sql, '#mobile', patient.mobile, []);
-  //sql := StringReplace(sql, '#email', patient.email, []);
-  //sql := StringReplace(sql, '#headImage', patient.headImage, []);
-  //sql := StringReplace(sql, '#patientCondition', patient.patientCondition, []);
-  //sql := StringReplace(sql, '#address', patient.address, []);
-
-  //fs:= TFileStream.Create(patient.headImage, fmOpenRead);
-  //fs.Position := 0;
 
   len := patient.photo.Size;
   patient.photo.Position := 0;
@@ -163,6 +180,40 @@ begin
     patient.photo.Position := 0;
     buffer := nil;
   end;
+end;
+
+{ TMedicalRecord }
+
+constructor TMedicalRecord.Create(id: Integer);
+begin
+  //
+end;
+
+procedure TMedicalRecord.Delete;
+begin
+  //
+end;
+
+procedure TMedicalRecord.Find;
+begin
+  Tab := Database.GetTable('select id, name, sex, blood, birthday, address, ' +
+      ' tel, mobile, patientCondition, headImage, photo' +
+      ' from patient where id <> 0');
+end;
+
+procedure TMedicalRecord.Insert;
+begin
+  //
+end;
+
+procedure TMedicalRecord.One;
+begin
+
+end;
+
+procedure TMedicalRecord.Update;
+begin
+  //
 end;
 
 end.
