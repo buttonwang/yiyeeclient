@@ -1,9 +1,9 @@
 object FrmMain: TFrmMain
-  Left = 0
-  Top = 0
+  Left = 686
+  Top = 193
   Caption = #20013#22269#32593#32476#20445#20581#38498
   ClientHeight = 564
-  ClientWidth = 713
+  ClientWidth = 738
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,7 +12,7 @@ object FrmMain: TFrmMain
   Font.Style = []
   Menu = mmMain
   OldCreateOrder = False
-  Position = poScreenCenter
+  Position = poDesktopCenter
   ScreenSnap = True
   OnClose = FormClose
   OnCreate = FormCreate
@@ -70,7 +70,7 @@ object FrmMain: TFrmMain
   object ctgrypnlgrp1: TCategoryPanelGroup
     Left = 148
     Top = 0
-    Width = 565
+    Width = 590
     Height = 564
     VertScrollBar.Tracking = True
     Align = alClient
@@ -95,10 +95,9 @@ object FrmMain: TFrmMain
       object grdpnl1: TGridPanel
         Left = 0
         Top = 0
-        Width = 561
+        Width = 586
         Height = 312
         Align = alClient
-        Caption = 'grdpnl1'
         ColumnCollection = <
           item
             Value = 50.000000000000000000
@@ -109,68 +108,72 @@ object FrmMain: TFrmMain
         ControlCollection = <
           item
             Column = 0
-            Control = lv1
+            Control = lvRecord
             Row = 0
           end
           item
             Column = 1
-            Control = lv2
+            Control = lvExam
             Row = 0
-          end
-          item
-            Column = 0
-            Control = lv3
-            Row = 1
-          end
-          item
-            Column = 1
-            Control = lv4
-            Row = 1
           end>
         RowCollection = <
           item
-            Value = 50.000000000000000000
-          end
-          item
-            Value = 50.000000000000000000
+            Value = 100.000000000000000000
           end>
-        ShowCaption = False
         TabOrder = 0
-        object lv1: TListView
+        object lvRecord: TListView
           Left = 1
           Top = 1
-          Width = 279
-          Height = 155
+          Width = 292
+          Height = 310
           Align = alClient
-          Columns = <>
+          Columns = <
+            item
+              Caption = #30149#21382#31867#22411
+              Width = 80
+            end
+            item
+              Caption = #26085#26399
+              Width = 100
+            end
+            item
+              Caption = #35786#26029#32467#26524
+              Width = 100
+            end
+            item
+              Caption = 'id'
+              Width = 0
+            end>
+          ReadOnly = True
+          RowSelect = True
+          ParentShowHint = False
+          ShowHint = True
           TabOrder = 0
+          ViewStyle = vsReport
+          OnColumnClick = lvRecordColumnClick
+          OnCompare = lvRecordCompare
+          OnDblClick = lvRecordDblClick
+          ExplicitTop = -3
         end
-        object lv2: TListView
-          Left = 280
+        object lvExam: TListView
+          Left = 293
           Top = 1
-          Width = 280
-          Height = 155
+          Width = 292
+          Height = 310
           Align = alClient
-          Columns = <>
+          Columns = <
+            item
+              Caption = #39033#30446#65288#26816#26597'/'#26816#39564#65289
+              Width = 120
+            end
+            item
+              Caption = #38451#24615#27425#25968
+              Width = 120
+            end>
           TabOrder = 1
-        end
-        object lv3: TListView
-          Left = 1
-          Top = 156
-          Width = 279
-          Height = 155
-          Align = alClient
-          Columns = <>
-          TabOrder = 2
-        end
-        object lv4: TListView
-          Left = 280
-          Top = 156
-          Width = 280
-          Height = 155
-          Align = alClient
-          Columns = <>
-          TabOrder = 3
+          ViewStyle = vsReport
+          ExplicitLeft = 299
+          ExplicitTop = -3
         end
       end
     end
@@ -24501,10 +24504,11 @@ object FrmMain: TFrmMain
       object pnl1: TPanel
         Left = 113
         Top = 0
-        Width = 448
+        Width = 473
         Height = 121
         Align = alClient
         TabOrder = 0
+        OnDblClick = img1DblClick
         object lbl1: TLabel
           Left = 16
           Top = 24

@@ -71,13 +71,11 @@ type
     lblEmail: TLabel;
     lbl11: TLabel;
     lblAddress: TLabel;
-    grdpnl1: TGridPanel;
-    lv1: TListView;
-    lv2: TListView;
-    lv3: TListView;
-    lv4: TListView;
     lbl6: TLabel;
     lblblood: TLabel;
+    grdpnl1: TGridPanel;
+    lvRecord: TListView;
+    lvExam: TListView;
     procedure Button1Click(Sender: TObject);
     procedure actQuitExecute(Sender: TObject);
     procedure actYiyeeExecute(Sender: TObject);
@@ -92,11 +90,19 @@ type
     procedure actCaseExamExecute(Sender: TObject);
     procedure actCaseOtherExecute(Sender: TObject);
     procedure img1DblClick(Sender: TObject);
+    procedure lvRecordColumnClick(Sender: TObject; Column: TListColumn);
+    procedure lvRecordCompare(Sender: TObject; Item1, Item2: TListItem;
+      Data: Integer; var Compare: Integer);
+    procedure lvRecordDblClick(Sender: TObject);
   private
     { Private declarations }
     procedure  changeSkill(index: Byte);
 
     procedure ShowPatient();
+    procedure fill();
+    procedure fillMRecord();
+    procedure fillMExamAndLis();
+    procedure fillCase();
   public
     { Public declarations }
   end;
@@ -110,29 +116,64 @@ implementation
 
 uses UAbout, UPatientEdit, UMRecord, UConst;
 
+var
+  MRColumnToSort: Integer;
+
 procedure TFrmMain.actAboutExecute(Sender: TObject);
 begin
   frmAbout.ShowModal;
 end;
 
-procedure TFrmMain.actCaseExamExecute(Sender: TObject);
+procedure TFrmMain.actCaseOutExecute(Sender: TObject);
 begin
-  frmMedicalEecord.ShowModal;
+  with TfrmMedicalRecord.Create(owner) do
+  try
+    mrType := 1;
+    ShowModal;
+
+    fill;
+  finally
+    Free;
+  end;
 end;
 
 procedure TFrmMain.actCaseInExecute(Sender: TObject);
 begin
-  frmMedicalEecord.ShowModal;
+  with TfrmMedicalRecord.Create(owner) do
+  try
+    mrType := 2;
+    ShowModal;
+
+    fill;
+  finally
+    Free;
+  end;
+end;
+
+procedure TFrmMain.actCaseExamExecute(Sender: TObject);
+begin
+  with TfrmMedicalRecord.Create(owner) do
+  try
+    mrType := 3;
+    ShowModal;
+
+    fill;
+  finally
+    Free;
+  end;
 end;
 
 procedure TFrmMain.actCaseOtherExecute(Sender: TObject);
 begin
-  frmMedicalEecord.ShowModal;
-end;
+  with TfrmMedicalRecord.Create(owner) do
+  try
+    mrType := 4;
+    ShowModal;
 
-procedure TFrmMain.actCaseOutExecute(Sender: TObject);
-begin
-  frmMedicalEecord.ShowModal;
+    fill;
+  finally
+    Free;
+  end;
 end;
 
 procedure TFrmMain.actPatientConfigExecute(Sender: TObject);
@@ -176,6 +217,56 @@ begin
   end;
 end;
 
+procedure TFrmMain.fill;
+begin
+  fillMRecord;
+  fillMExamAndLis;
+  fillCase;
+end;
+
+procedure TFrmMain.fillMRecord;
+var ListItem: TListItem;
+begin
+  TMedicalRecord.FindAll;
+  with lvRecord do
+  begin
+    lvRecord.Items.Clear;
+
+    while not Tab.EOF do
+    begin
+      ListItem := Items.Add;
+      ListItem.Caption := GetMRTypeName(Tab.FieldAsInteger(1));
+      ListItem.SubItems.Add(Tab.FieldByName['seeTime']);
+      ListItem.SubItems.Add(Tab.FieldByName['record']);
+      ListItem.SubItems.Add(Tab.FieldByName['id']);
+      Tab.Next;
+    end;
+  end;
+end;
+
+procedure TFrmMain.fillMExamAndLis;
+var ListItem: TListItem;
+begin
+  TMedicalLis.FindPositive;
+  with lvExam do
+  begin
+    lvExam.Items.Clear;
+
+    while not Tab.EOF do
+    begin
+      ListItem := Items.Add;
+      ListItem.Caption := Tab.FieldByName['lis_name'];
+      ListItem.SubItems.Add(Tab.FieldByName['positive_count']);
+      Tab.Next;
+    end;
+  end;
+end;
+
+procedure TFrmMain.fillCase;
+begin
+  //
+end;
+
 procedure TFrmMain.FormShow(Sender: TObject);
 begin
   ShowPatient;
@@ -184,6 +275,41 @@ end;
 procedure TFrmMain.img1DblClick(Sender: TObject);
 begin
   actPatientConfig.Execute();
+end;
+
+procedure TFrmMain.lvRecordColumnClick(Sender: TObject; Column: TListColumn);
+begin
+   MRColumnToSort := Column.Index;
+  (Sender as TCustomListView).AlphaSort;
+end;
+
+procedure TFrmMain.lvRecordCompare(Sender: TObject; Item1, Item2: TListItem;
+  Data: Integer; var Compare: Integer);
+var
+  ix: Integer;
+begin
+  if MRColumnToSort = 0 then
+    Compare := CompareText(Item1.Caption,Item2.Caption)
+  else begin
+   ix := MRColumnToSort - 1;
+   Compare := CompareText(Item1.SubItems[ix],Item2.SubItems[ix]);
+  end;
+end;
+
+procedure TFrmMain.lvRecordDblClick(Sender: TObject);
+begin
+  if lvRecord.Selected <> nil then
+  begin
+    with TfrmMedicalRecord.Create(owner) do
+    try
+      medId := StrToInt(lvRecord.Selected.SubItems[2]);
+      ShowModal;
+
+      fill;
+    finally
+      Free;
+    end;
+  end;
 end;
 
 procedure TFrmMain.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -195,6 +321,7 @@ procedure TFrmMain.FormCreate(Sender: TObject);
 begin
   OpenDB();
   InitDB();
+  Fill();
 end;
 
 procedure TFrmMain.ShowPatient;

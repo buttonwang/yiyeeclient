@@ -1,4 +1,4 @@
-object frmMedicalEecord: TfrmMedicalEecord
+object frmMedicalRecord: TfrmMedicalRecord
   Left = 0
   Top = 0
   Caption = #30149#21382#24405#20837
@@ -13,6 +13,7 @@ object frmMedicalEecord: TfrmMedicalEecord
   OldCreateOrder = False
   Position = poOwnerFormCenter
   OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object grp1: TGroupBox
@@ -51,12 +52,11 @@ object frmMedicalEecord: TfrmMedicalEecord
       Height = 13
       Caption = #27835#30103#26041#27861#65306
     end
-    object rg1: TRadioGroup
+    object rgType: TRadioGroup
       Left = 29
       Top = 16
       Width = 107
       Height = 131
-      Enabled = False
       ItemIndex = 0
       Items.Strings = (
         #38376#35786#30149#21382
@@ -65,14 +65,14 @@ object frmMedicalEecord: TfrmMedicalEecord
         #20854#20182#30149#21382)
       TabOrder = 0
     end
-    object mmo1: TMemo
+    object mmoRecord: TMemo
       Left = 222
       Top = 75
       Width = 411
       Height = 41
       Lines.Strings = (
         #35831#22635#20889#21307#29983#32473#30340#35786#26029#32467#26524)
-      TabOrder = 5
+      TabOrder = 4
     end
     object edtHospital: TEdit
       Left = 222
@@ -90,29 +90,39 @@ object frmMedicalEecord: TfrmMedicalEecord
       Time = 40945.932047824080000000
       TabOrder = 2
     end
-    object btn1: TButton
+    object btnSave: TButton
       Left = 456
       Top = 122
       Width = 81
       Height = 30
       Caption = #20445#23384
-      TabOrder = 4
+      TabOrder = 5
+      OnClick = btnSaveClick
     end
-    object btn2: TButton
+    object btnClose: TButton
       Left = 552
       Top = 122
       Width = 81
       Height = 30
       Caption = #20851#38381
       TabOrder = 6
-      OnClick = btn2Click
+      OnClick = btnCloseClick
     end
-    object edt111: TEdit
+    object edtTreatment: TEdit
       Left = 222
       Top = 48
       Width = 411
       Height = 21
       TabOrder = 3
+    end
+    object edtID: TEdit
+      Left = 636
+      Top = 125
+      Width = 29
+      Height = 21
+      TabOrder = 7
+      Text = '0'
+      Visible = False
     end
   end
   object pgc1: TPageControl
@@ -144,7 +154,7 @@ object frmMedicalEecord: TfrmMedicalEecord
     object ts2: TTabSheet
       Caption = #26816#39564#39033#30446
       ImageIndex = 1
-      object tv1: TTreeView
+      object tvLisItem: TTreeView
         Left = 0
         Top = 0
         Width = 159
@@ -152,6 +162,7 @@ object frmMedicalEecord: TfrmMedicalEecord
         Align = alLeft
         Indent = 19
         TabOrder = 0
+        OnClick = tvLisItemClick
         Items.NodeData = {
           0306000000240000000000000000000000FFFFFFFFFFFFFFFF00000000000000
           0004000000010340881F751653280000000000000000000000FFFFFFFFFFFFFF
@@ -187,19 +198,30 @@ object frmMedicalEecord: TfrmMedicalEecord
         Height = 380
         Align = alClient
         TabOrder = 1
-        object grp2: TGroupBox
+        object grpLisInfo: TGroupBox
           Left = 1
-          Top = 290
+          Top = 1
           Width = 505
-          Height = 89
-          Align = alBottom
-          Caption = #22791#27880#35828#26126
+          Height = 128
+          Align = alTop
+          Caption = #26816#39564#20449#24687
+          Enabled = False
           TabOrder = 0
+          object lblLisName: TLabel
+            Left = 6
+            Top = 25
+            Width = 87
+            Height = 13
+            Caption = #39033#30446#21517#31216#65306
+          end
           object mmo2: TMemo
-            Left = 5
-            Top = 13
-            Width = 476
-            Height = 65
+            Left = 2
+            Top = 56
+            Width = 501
+            Height = 70
+            Align = alBottom
+            BorderStyle = bsNone
+            Color = clCream
             Lines.Strings = (
               #27491#24120#24773#20917#65306' (5.1-17.1)umol/L '
               #22686#39640#65306' '#24613#12289#24930#24615#32925#28814#65292#26775#38459#24615#40644#30136#65292#34880#33394#32032#27785#30528#30151#65292#32925#30284#65292#32966
@@ -207,36 +229,58 @@ object frmMedicalEecord: TfrmMedicalEecord
             ReadOnly = True
             TabOrder = 0
           end
-        end
-        object vlsLis: TValueListEditor
-          Left = 1
-          Top = 36
-          Width = 505
-          Height = 254
-          Align = alClient
-          TabOrder = 1
-          TitleCaptions.Strings = (
-            #39033#30446
-            #26816#39564#32467#26524'     ('#35831#22635#20837#26412#27425#26816#39564#30340#32467#26524')')
-          ColWidths = (
-            75
-            424)
-        end
-        object pnl2: TPanel
-          Left = 1
-          Top = 1
-          Width = 505
-          Height = 35
-          Align = alTop
-          TabOrder = 2
-          object btnAppend: TBitBtn
-            Left = 5
-            Top = 5
-            Width = 58
-            Height = 24
+          object btnSaveLis: TButton
+            Left = 392
+            Top = 17
+            Width = 81
+            Height = 26
             Caption = #22686#21152
-            TabOrder = 0
+            TabOrder = 1
+            OnClick = btnSaveLisClick
           end
+          object chkPositive: TCheckBox
+            Left = 248
+            Top = 21
+            Width = 62
+            Height = 17
+            Caption = #38451#24615
+            TabOrder = 2
+          end
+          object edtLisValue: TEdit
+            Left = 95
+            Top = 20
+            Width = 124
+            Height = 21
+            TabOrder = 3
+          end
+        end
+        object lvLis: TListView
+          Left = 1
+          Top = 129
+          Width = 505
+          Height = 250
+          Align = alClient
+          Columns = <
+            item
+              Caption = #26816#39564#39033#30446
+              Width = 120
+            end
+            item
+              Caption = #26816#39564#20540
+              Width = 120
+            end
+            item
+              Caption = #26816#39564#32467#26524
+              Width = 120
+            end
+            item
+              Caption = 'id'
+              Width = 0
+            end>
+          TabOrder = 1
+          ViewStyle = vsReport
+          ExplicitLeft = 6
+          ExplicitTop = 133
         end
       end
     end

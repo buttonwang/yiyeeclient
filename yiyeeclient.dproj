@@ -102,7 +102,7 @@
 				<Form>frmPatientEdit</Form>
 			</DCCReference>
 			<DCCReference Include="UMRecord.pas">
-				<Form>frmMedicalEecord</Form>
+				<Form>frmMedicalRecord</Form>
 				<FormType>dfm</FormType>
 			</DCCReference>
 			<DCCReference Include="UConst.pas"/>

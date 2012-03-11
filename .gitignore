@@ -4,4 +4,5 @@ __history/
 *.dcu
 *~
 Win32/Debug/yiyeeclient.exe
+Win32/Debug/yiyee.db
 Win32/Debug/*.dcu
