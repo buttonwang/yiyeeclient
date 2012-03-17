@@ -40,7 +40,7 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
-			<VCL_Custom_Styles>&quot;Carbon|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\9.0\Styles\Carbon.vsf&quot;;&quot;Emerald Light Slate|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\9.0\Styles\EmeraldLightSlate.vsf&quot;;&quot;Sapphire Kamri|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\9.0\Styles\SapphireKamri.vsf&quot;;&quot;Smokey Quartz Kamri|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\9.0\Styles\SmokeyQuartzKamri.vsf&quot;</VCL_Custom_Styles>
+			<VCL_Custom_Styles>&quot;Carbon|VCLSTYLE|$(ALLUSERSPROFILE)\Documents\RAD Studio\9.0\Styles\Carbon.vsf&quot;;&quot;Emerald Light Slate|VCLSTYLE|$(ALLUSERSPROFILE)\Documents\RAD Studio\9.0\Styles\EmeraldLightSlate.vsf&quot;;&quot;Sapphire Kamri|VCLSTYLE|$(ALLUSERSPROFILE)\Documents\RAD Studio\9.0\Styles\SapphireKamri.vsf&quot;;&quot;Smokey Quartz Kamri|VCLSTYLE|$(ALLUSERSPROFILE)\Documents\RAD Studio\9.0\Styles\SmokeyQuartzKamri.vsf&quot;</VCL_Custom_Styles>
 			<DCC_UsePackage>bindcompfmx;fmx;rtl;IndySystem;DbxClientDriver;dbrtl;bindcomp;inetdb;DataSnapClient;DataSnapServer;DataSnapCommon;DBXInterBaseDriver;DataSnapProviderClient;xmlrtl;ibxpress;DbxCommonDriver;IndyProtocols;dbxcds;DBXMySQLDriver;bindengine;FMXTee;soaprtl;DBXOracleDriver;dsnap;DBXInformixDriver;IndyCore;fmxase;CloudService;DBXFirebirdDriver;FmxTeeUI;inet;fmxobj;inetdbxpress;DBXSybaseASADriver;fmxdae;IPIndyImpl;dbexpress;DataSnapIndy10ServerTransport;$(DCC_UsePackage)</DCC_UsePackage>
 			<DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
 			<Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>

@@ -15,9 +15,9 @@ type
     ts2: TTabSheet;
     vlsExam: TValueListEditor;
     rgType: TRadioGroup;
-    lbl1: TLabel;
-    lbl2: TLabel;
-    lbl3: TLabel;
+    lblHospital: TLabel;
+    lblSeeTime: TLabel;
+    lblRecord: TLabel;
     mmoRecord: TMemo;
     edtHospital: TEdit;
     dtpInDocTime: TDateTimePicker;
@@ -27,7 +27,7 @@ type
     mmo2: TMemo;
     btnSave: TButton;
     btnClose: TButton;
-    lbl4: TLabel;
+    lblTreatment: TLabel;
     edtID: TEdit;
     lvLis: TListView;
     lblLisName: TLabel;
@@ -165,16 +165,24 @@ begin
       dtpInDocTime.Date := StrToDate(Tab.FieldByName['seeTime']);
       edtTreatment.Text := Tab.FieldByName['treatment'];
       mmoRecord.Text := Tab.FieldByName['record'];
+      mrType := StrToInt(Tab.FieldByName['type']);
       rgType.ItemIndex := StrToInt(Tab.FieldByName['type']) - 1;
       edtID.Text := Tab.FieldByName['id'];
+
 
       FillExamList;
       FillLisList;
     end;
-
-
   end;
 
+  if mrType=3 then
+  begin
+    lblHospital.Caption := '体检医院：';
+    lblSeeTime.Caption := '体检时间：';
+    lblRecord.Caption := '异常项目：';
+    lblTreatment.Caption := '体检结果：';
+  end;
+  rgType.Enabled := False;
   edtHospital.SetFocus;
 end;
 

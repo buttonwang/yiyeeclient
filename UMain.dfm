@@ -157,6 +157,7 @@ object FrmMain: TFrmMain
           OnColumnClick = lvRecordColumnClick
           OnCompare = lvRecordCompare
           OnDblClick = lvRecordDblClick
+          ExplicitTop = -3
         end
         object lvExam: TListView
           Left = 293
@@ -175,6 +176,8 @@ object FrmMain: TFrmMain
             end>
           TabOrder = 1
           ViewStyle = vsReport
+          ExplicitLeft = 299
+          ExplicitTop = -3
         end
       end
     end

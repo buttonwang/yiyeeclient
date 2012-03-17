@@ -24,30 +24,30 @@ object frmMedicalRecord: TfrmMedicalRecord
     Align = alTop
     Caption = #30149#21382#22522#26412#20449#24687
     TabOrder = 0
-    object lbl1: TLabel
+    object lblHospital: TLabel
       Left = 156
       Top = 25
       Width = 60
       Height = 13
       Caption = #23601#35786#21307#38498#65306
     end
-    object lbl2: TLabel
+    object lblSeeTime: TLabel
       Left = 380
       Top = 25
       Width = 60
       Height = 13
       Caption = #23601#35786#26102#38388#65306
     end
-    object lbl3: TLabel
+    object lblRecord: TLabel
       Left = 156
-      Top = 48
+      Top = 51
       Width = 60
       Height = 13
       Caption = #35786#26029#32467#26524#65306
     end
-    object lbl4: TLabel
+    object lblTreatment: TLabel
       Left = 156
-      Top = 98
+      Top = 101
       Width = 60
       Height = 13
       Caption = #27835#30103#26041#27861#65306
@@ -70,8 +70,6 @@ object frmMedicalRecord: TfrmMedicalRecord
       Top = 48
       Width = 411
       Height = 41
-      Lines.Strings = (
-        #35831#22635#20889#21307#29983#32473#30340#35786#26029#32467#26524)
       TabOrder = 3
     end
     object edtHospital: TEdit
@@ -122,8 +120,6 @@ object frmMedicalRecord: TfrmMedicalRecord
       Top = 98
       Width = 411
       Height = 41
-      Lines.Strings = (
-        #35831#22635#20889#21307#29983#32473#30340#35786#26029#32467#26524)
       TabOrder = 4
     end
   end
@@ -135,11 +131,8 @@ object frmMedicalRecord: TfrmMedicalRecord
     ActivePage = ts2
     Align = alClient
     TabOrder = 1
-    ExplicitTop = 159
-    ExplicitHeight = 408
     object ts1: TTabSheet
       Caption = #26816#26597#39033#30446
-      ExplicitHeight = 380
       object vlsExam: TValueListEditor
         Left = 0
         Top = 0
@@ -151,7 +144,6 @@ object frmMedicalRecord: TfrmMedicalRecord
         TitleCaptions.Strings = (
           #39033#30446
           #26816#26597#32467#26524'   ('#35831#22635#20837#26412#27425#26816#26597#30340#32467#26524')')
-        ExplicitHeight = 380
         ColWidths = (
           113
           547)
@@ -160,7 +152,6 @@ object frmMedicalRecord: TfrmMedicalRecord
     object ts2: TTabSheet
       Caption = #26816#39564#39033#30446
       ImageIndex = 1
-      ExplicitHeight = 380
       object tvLisItem: TTreeView
         Left = 0
         Top = 0
@@ -197,7 +188,6 @@ object frmMedicalRecord: TfrmMedicalRecord
           89280000000000000000000000FFFFFFFFFFFFFFFF0000000000000000000000
           000105BF8024760768D75F6972220000000000000000000000FFFFFFFFFFFFFF
           FF00000000000000000000000001027651835B}
-        ExplicitHeight = 380
       end
       object pnl1: TPanel
         Left = 159
@@ -206,7 +196,6 @@ object frmMedicalRecord: TfrmMedicalRecord
         Height = 362
         Align = alClient
         TabOrder = 1
-        ExplicitHeight = 380
         object grpLisInfo: TGroupBox
           Left = 1
           Top = 1
@@ -236,7 +225,7 @@ object frmMedicalRecord: TfrmMedicalRecord
               #22686#39640#65306' '#24613#12289#24930#24615#32925#28814#65292#26775#38459#24615#40644#30136#65292#34880#33394#32032#27785#30528#30151#65292#32925#30284#65292#32966
               #32467#30707#65292#32966#31649#28814#65292#32925#30828#21270#65292#28342#34880#24615#30142#30149)
             ReadOnly = True
-            TabOrder = 0
+            TabOrder = 3
           end
           object btnSaveLis: TButton
             Left = 392
@@ -244,7 +233,7 @@ object frmMedicalRecord: TfrmMedicalRecord
             Width = 81
             Height = 26
             Caption = #22686#21152
-            TabOrder = 1
+            TabOrder = 0
             OnClick = btnSaveLisClick
           end
           object chkPositive: TCheckBox
@@ -260,7 +249,7 @@ object frmMedicalRecord: TfrmMedicalRecord
             Top = 20
             Width = 124
             Height = 21
-            TabOrder = 3
+            TabOrder = 1
           end
         end
         object lvLis: TListView
@@ -288,7 +277,6 @@ object frmMedicalRecord: TfrmMedicalRecord
             end>
           TabOrder = 1
           ViewStyle = vsReport
-          ExplicitHeight = 250
         end
       end
     end
