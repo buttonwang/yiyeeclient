@@ -28,13 +28,13 @@ type
     btnSave: TButton;
     btnClose: TButton;
     lbl4: TLabel;
-    edtTreatment: TEdit;
     edtID: TEdit;
     lvLis: TListView;
     lblLisName: TLabel;
     btnSaveLis: TButton;
     chkPositive: TCheckBox;
     edtLisValue: TEdit;
+    edtTreatment: TMemo;
     procedure FormCreate(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);

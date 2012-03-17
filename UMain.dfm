@@ -40,6 +40,7 @@ object FrmMain: TFrmMain
       Width = 123
       Height = 44
       Action = actCaseOut
+      Enabled = False
       TabOrder = 0
     end
     object btnCaseIn: TButton
@@ -48,6 +49,7 @@ object FrmMain: TFrmMain
       Width = 123
       Height = 44
       Action = actCaseIn
+      Enabled = False
       TabOrder = 1
     end
     object btnCaseExam: TButton
@@ -56,6 +58,7 @@ object FrmMain: TFrmMain
       Width = 123
       Height = 44
       Action = actCaseExam
+      Enabled = False
       TabOrder = 2
     end
     object btnCaseOther: TButton
@@ -64,6 +67,7 @@ object FrmMain: TFrmMain
       Width = 123
       Height = 44
       Action = actCaseOther
+      Enabled = False
       TabOrder = 3
     end
   end
@@ -153,7 +157,6 @@ object FrmMain: TFrmMain
           OnColumnClick = lvRecordColumnClick
           OnCompare = lvRecordCompare
           OnDblClick = lvRecordDblClick
-          ExplicitTop = -3
         end
         object lvExam: TListView
           Left = 293
@@ -172,8 +175,6 @@ object FrmMain: TFrmMain
             end>
           TabOrder = 1
           ViewStyle = vsReport
-          ExplicitLeft = 299
-          ExplicitTop = -3
         end
       end
     end
@@ -24698,14 +24699,15 @@ object FrmMain: TFrmMain
         Action = actSoftConfig
       end
     end
+    object N11: TMenuItem
+      Action = actYiyee
+    end
+    object N12: TMenuItem
+      Action = actAbout
+    end
     object N10: TMenuItem
       Caption = #24110#21161
-      object N11: TMenuItem
-        Action = actYiyee
-      end
-      object N12: TMenuItem
-        Action = actAbout
-      end
+      Visible = False
     end
     object N13: TMenuItem
       Action = actQuit

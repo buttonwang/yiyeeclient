@@ -20,7 +20,7 @@ object frmMedicalRecord: TfrmMedicalRecord
     Left = 0
     Top = 0
     Width = 674
-    Height = 159
+    Height = 177
     Align = alTop
     Caption = #30149#21382#22522#26412#20449#24687
     TabOrder = 0
@@ -40,14 +40,14 @@ object frmMedicalRecord: TfrmMedicalRecord
     end
     object lbl3: TLabel
       Left = 156
-      Top = 75
+      Top = 48
       Width = 60
       Height = 13
       Caption = #35786#26029#32467#26524#65306
     end
     object lbl4: TLabel
       Left = 156
-      Top = 52
+      Top = 98
       Width = 60
       Height = 13
       Caption = #27835#30103#26041#27861#65306
@@ -67,12 +67,12 @@ object frmMedicalRecord: TfrmMedicalRecord
     end
     object mmoRecord: TMemo
       Left = 222
-      Top = 75
+      Top = 48
       Width = 411
       Height = 41
       Lines.Strings = (
         #35831#22635#20889#21307#29983#32473#30340#35786#26029#32467#26524)
-      TabOrder = 4
+      TabOrder = 3
     end
     object edtHospital: TEdit
       Left = 222
@@ -92,7 +92,7 @@ object frmMedicalRecord: TfrmMedicalRecord
     end
     object btnSave: TButton
       Left = 456
-      Top = 122
+      Top = 143
       Width = 81
       Height = 30
       Caption = #20445#23384
@@ -101,51 +101,57 @@ object frmMedicalRecord: TfrmMedicalRecord
     end
     object btnClose: TButton
       Left = 552
-      Top = 122
+      Top = 143
       Width = 81
       Height = 30
       Caption = #20851#38381
       TabOrder = 6
       OnClick = btnCloseClick
     end
-    object edtTreatment: TEdit
-      Left = 222
-      Top = 48
-      Width = 411
-      Height = 21
-      TabOrder = 3
-    end
     object edtID: TEdit
       Left = 636
-      Top = 125
+      Top = 146
       Width = 29
       Height = 21
       TabOrder = 7
       Text = '0'
       Visible = False
     end
+    object edtTreatment: TMemo
+      Left = 222
+      Top = 98
+      Width = 411
+      Height = 41
+      Lines.Strings = (
+        #35831#22635#20889#21307#29983#32473#30340#35786#26029#32467#26524)
+      TabOrder = 4
+    end
   end
   object pgc1: TPageControl
     Left = 0
-    Top = 159
+    Top = 177
     Width = 674
-    Height = 408
-    ActivePage = ts1
+    Height = 390
+    ActivePage = ts2
     Align = alClient
     TabOrder = 1
+    ExplicitTop = 159
+    ExplicitHeight = 408
     object ts1: TTabSheet
       Caption = #26816#26597#39033#30446
+      ExplicitHeight = 380
       object vlsExam: TValueListEditor
         Left = 0
         Top = 0
         Width = 666
-        Height = 380
+        Height = 362
         Align = alClient
         DropDownRows = 10
         TabOrder = 0
         TitleCaptions.Strings = (
           #39033#30446
           #26816#26597#32467#26524'   ('#35831#22635#20837#26412#27425#26816#26597#30340#32467#26524')')
+        ExplicitHeight = 380
         ColWidths = (
           113
           547)
@@ -154,11 +160,12 @@ object frmMedicalRecord: TfrmMedicalRecord
     object ts2: TTabSheet
       Caption = #26816#39564#39033#30446
       ImageIndex = 1
+      ExplicitHeight = 380
       object tvLisItem: TTreeView
         Left = 0
         Top = 0
         Width = 159
-        Height = 380
+        Height = 362
         Align = alLeft
         Indent = 19
         TabOrder = 0
@@ -190,14 +197,16 @@ object frmMedicalRecord: TfrmMedicalRecord
           89280000000000000000000000FFFFFFFFFFFFFFFF0000000000000000000000
           000105BF8024760768D75F6972220000000000000000000000FFFFFFFFFFFFFF
           FF00000000000000000000000001027651835B}
+        ExplicitHeight = 380
       end
       object pnl1: TPanel
         Left = 159
         Top = 0
         Width = 507
-        Height = 380
+        Height = 362
         Align = alClient
         TabOrder = 1
+        ExplicitHeight = 380
         object grpLisInfo: TGroupBox
           Left = 1
           Top = 1
@@ -210,7 +219,7 @@ object frmMedicalRecord: TfrmMedicalRecord
           object lblLisName: TLabel
             Left = 6
             Top = 25
-            Width = 87
+            Width = 60
             Height = 13
             Caption = #39033#30446#21517#31216#65306
           end
@@ -258,7 +267,7 @@ object frmMedicalRecord: TfrmMedicalRecord
           Left = 1
           Top = 129
           Width = 505
-          Height = 250
+          Height = 232
           Align = alClient
           Columns = <
             item
@@ -279,8 +288,7 @@ object frmMedicalRecord: TfrmMedicalRecord
             end>
           TabOrder = 1
           ViewStyle = vsReport
-          ExplicitLeft = 6
-          ExplicitTop = 133
+          ExplicitHeight = 250
         end
       end
     end
