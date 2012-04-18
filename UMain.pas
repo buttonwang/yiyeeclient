@@ -76,6 +76,11 @@ type
     grdpnl1: TGridPanel;
     lvRecord: TListView;
     lvExam: TListView;
+    N18: TMenuItem;
+    N19: TMenuItem;
+    N20: TMenuItem;
+    actRecord: TAction;
+    actBodyRecord: TAction;
     procedure Button1Click(Sender: TObject);
     procedure actQuitExecute(Sender: TObject);
     procedure actYiyeeExecute(Sender: TObject);
@@ -94,6 +99,8 @@ type
     procedure lvRecordCompare(Sender: TObject; Item1, Item2: TListItem;
       Data: Integer; var Compare: Integer);
     procedure lvRecordDblClick(Sender: TObject);
+    procedure actBodyRecordExecute(Sender: TObject);
+    procedure actRecordExecute(Sender: TObject);
   private
     { Private declarations }
     procedure  changeSkill(index: Byte);
@@ -114,7 +121,7 @@ implementation
 
 {$R *.dfm}
 
-uses UAbout, UPatientEdit, UMRecord, UConst;
+uses UAbout, UPatientEdit, UMRecord, UConst, UCRecord, UBodyRecord;
 
 var
   MRColumnToSort: Integer;
@@ -142,6 +149,18 @@ begin
   with TfrmMedicalRecord.Create(owner) do
   try
     mrType := 2;
+    ShowModal;
+
+    fill;
+  finally
+    Free;
+  end;
+end;
+
+procedure TFrmMain.actBodyRecordExecute(Sender: TObject);
+begin
+  with TfrmBodyRecord.Create(owner) do
+  try
     ShowModal;
 
     fill;
@@ -185,6 +204,18 @@ end;
 procedure TFrmMain.actQuitExecute(Sender: TObject);
 begin
   FrmMain.Close;
+end;
+
+procedure TFrmMain.actRecordExecute(Sender: TObject);
+begin
+  with TfrmCaseRecord.Create(owner) do
+  try
+    ShowModal;
+
+    fill;
+  finally
+    Free;
+  end;
 end;
 
 procedure TFrmMain.actSkinExecute(Sender: TObject);

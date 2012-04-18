@@ -157,7 +157,6 @@ object FrmMain: TFrmMain
           OnColumnClick = lvRecordColumnClick
           OnCompare = lvRecordCompare
           OnDblClick = lvRecordDblClick
-          ExplicitTop = -3
         end
         object lvExam: TListView
           Left = 293
@@ -176,8 +175,6 @@ object FrmMain: TFrmMain
             end>
           TabOrder = 1
           ViewStyle = vsReport
-          ExplicitLeft = 299
-          ExplicitTop = -3
         end
       end
     end
@@ -24665,6 +24662,15 @@ object FrmMain: TFrmMain
         Action = actCaseOther
       end
     end
+    object N18: TMenuItem
+      Caption = #30149#24535#31649#29702
+      object N19: TMenuItem
+        Action = actRecord
+      end
+      object N20: TMenuItem
+        Action = actBodyRecord
+      end
+    end
     object N6: TMenuItem
       Caption = #35774#32622
       object N8: TMenuItem
@@ -24757,6 +24763,14 @@ object FrmMain: TFrmMain
     object actQuit: TAction
       Caption = #36864#20986
       OnExecute = actQuitExecute
+    end
+    object actRecord: TAction
+      Caption = #30149#24535#24405#20837
+      OnExecute = actRecordExecute
+    end
+    object actBodyRecord: TAction
+      Caption = #20307#24449#24405#20837
+      OnExecute = actBodyRecordExecute
     end
   end
 end

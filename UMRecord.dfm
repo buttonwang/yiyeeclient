@@ -128,7 +128,7 @@ object frmMedicalRecord: TfrmMedicalRecord
     Top = 177
     Width = 674
     Height = 390
-    ActivePage = ts2
+    ActivePage = ts1
     Align = alClient
     TabOrder = 1
     object ts1: TTabSheet
