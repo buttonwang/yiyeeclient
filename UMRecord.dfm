@@ -128,7 +128,7 @@ object frmMedicalRecord: TfrmMedicalRecord
     Top = 177
     Width = 674
     Height = 390
-    ActivePage = ts1
+    ActivePage = ts2
     Align = alClient
     TabOrder = 1
     object ts1: TTabSheet
@@ -200,36 +200,56 @@ object frmMedicalRecord: TfrmMedicalRecord
           Left = 1
           Top = 1
           Width = 505
-          Height = 128
+          Height = 177
           Align = alTop
           Caption = #26816#39564#20449#24687
           Enabled = False
           TabOrder = 0
           object lblLisName: TLabel
             Left = 6
-            Top = 25
-            Width = 60
-            Height = 13
-            Caption = #39033#30446#21517#31216#65306
+            Top = 22
+            Width = 64
+            Height = 16
+            Caption = #39033#30446#21517#31216
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
           end
-          object mmo2: TMemo
+          object lbl1: TLabel
+            Left = 6
+            Top = 54
+            Width = 48
+            Height = 13
+            Caption = #21442#32771#20540#65306
+          end
+          object lbl2: TLabel
+            Left = 6
+            Top = 83
+            Width = 48
+            Height = 13
+            Caption = #26816#39564#20540#65306
+          end
+          object mmoRemark: TMemo
             Left = 2
-            Top = 56
+            Top = 105
             Width = 501
             Height = 70
             Align = alBottom
             BorderStyle = bsNone
             Color = clCream
             Lines.Strings = (
-              #27491#24120#24773#20917#65306' (5.1-17.1)umol/L '
-              #22686#39640#65306' '#24613#12289#24930#24615#32925#28814#65292#26775#38459#24615#40644#30136#65292#34880#33394#32032#27785#30528#30151#65292#32925#30284#65292#32966
-              #32467#30707#65292#32966#31649#28814#65292#32925#30828#21270#65292#28342#34880#24615#30142#30149)
+              '')
             ReadOnly = True
             TabOrder = 3
+            ExplicitLeft = 3
+            ExplicitTop = 55
           end
           object btnSaveLis: TButton
-            Left = 392
-            Top = 17
+            Left = 388
+            Top = 77
             Width = 81
             Height = 26
             Caption = #22686#21152
@@ -237,26 +257,34 @@ object frmMedicalRecord: TfrmMedicalRecord
             OnClick = btnSaveLisClick
           end
           object chkPositive: TCheckBox
-            Left = 248
-            Top = 21
+            Left = 292
+            Top = 81
             Width = 62
             Height = 17
             Caption = #38451#24615
             TabOrder = 2
           end
           object edtLisValue: TEdit
-            Left = 95
-            Top = 20
-            Width = 124
+            Left = 79
+            Top = 80
+            Width = 146
             Height = 21
             TabOrder = 1
+          end
+          object edtLisScope: TEdit
+            Left = 79
+            Top = 49
+            Width = 389
+            Height = 21
+            ReadOnly = True
+            TabOrder = 4
           end
         end
         object lvLis: TListView
           Left = 1
-          Top = 129
+          Top = 178
           Width = 505
-          Height = 232
+          Height = 183
           Align = alClient
           Columns = <
             item
@@ -277,6 +305,8 @@ object frmMedicalRecord: TfrmMedicalRecord
             end>
           TabOrder = 1
           ViewStyle = vsReport
+          ExplicitTop = 129
+          ExplicitHeight = 232
         end
       end
     end

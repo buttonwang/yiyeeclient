@@ -12,6 +12,7 @@ object frmBodyRecord: TfrmBodyRecord
   Font.Style = []
   OldCreateOrder = False
   Position = poOwnerFormCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object pnl1: TPanel
@@ -21,18 +22,15 @@ object frmBodyRecord: TfrmBodyRecord
     Height = 498
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 13
-    ExplicitTop = 32
-    ExplicitWidth = 530
     object lblHospital: TLabel
-      Left = 50
-      Top = 36
-      Width = 36
+      Left = 32
+      Top = 34
+      Width = 56
       Height = 13
-      Caption = #20307#28201#65306
+      Caption = #20307#28201'('#8451')'#65306
     end
     object lblSeeTime: TLabel
-      Left = 26
+      Left = 32
       Top = 68
       Width = 60
       Height = 13
@@ -58,14 +56,14 @@ object frmBodyRecord: TfrmBodyRecord
       ParentFont = False
     end
     object lbl1: TLabel
-      Left = 6
+      Left = 32
       Top = 124
-      Width = 84
+      Width = 72
       Height = 13
-      Caption = '    '#24515#29575'('#27425'/'#20998')'#65306
+      Caption = #24515#29575'('#27425'/'#20998')'#65306
     end
     object lbl2: TLabel
-      Left = 26
+      Left = 32
       Top = 156
       Width = 60
       Height = 13
@@ -93,9 +91,9 @@ object frmBodyRecord: TfrmBodyRecord
     object lbl4: TLabel
       Left = 32
       Top = 223
-      Width = 58
+      Width = 82
       Height = 13
-      Caption = #23567#20415#37327'(ml):'
+      Caption = #23567#20415#37327'(ml/'#26085')'#65306
     end
     object shp3: TShape
       Left = 26
@@ -117,18 +115,18 @@ object frmBodyRecord: TfrmBodyRecord
       ParentFont = False
     end
     object lbl5: TLabel
-      Left = 18
+      Left = 32
       Top = 250
-      Width = 72
+      Width = 96
       Height = 13
-      Caption = #22823#20415#27425#25968'('#27425'):'
+      Caption = #22823#20415#27425#25968'('#27425'/'#26085')'#65306
     end
     object lbl7: TLabel
-      Left = 29
+      Left = 32
       Top = 277
-      Width = 61
+      Width = 82
       Height = 13
-      Caption = ' '#39278#20837#37327'(ml):'
+      Caption = #39278#20837#37327'(ml/'#26085')'#65306
     end
     object lbl8: TLabel
       Left = 29
@@ -146,206 +144,229 @@ object frmBodyRecord: TfrmBodyRecord
     object lbl9: TLabel
       Left = 32
       Top = 326
-      Width = 16
+      Width = 24
       Height = 13
-      Caption = #26089':'
+      Caption = #26089#65306
     end
     object lbl10: TLabel
-      Left = 81
+      Left = 74
       Top = 326
-      Width = 28
+      Width = 36
       Height = 13
-      Caption = #20302#21387':'
+      Caption = #20302#21387#65306
     end
     object lbl12: TLabel
-      Left = 202
+      Left = 195
       Top = 326
-      Width = 28
+      Width = 36
       Height = 13
-      Caption = #39640#21387':'
+      Caption = #39640#21387#65306
     end
     object lbl13: TLabel
-      Left = 33
+      Left = 32
       Top = 353
-      Width = 16
+      Width = 24
       Height = 13
-      Caption = #20013':'
+      Caption = #20013#65306
     end
     object lbl14: TLabel
-      Left = 82
+      Left = 75
       Top = 353
-      Width = 28
+      Width = 36
       Height = 13
-      Caption = #20302#21387':'
+      Caption = #20302#21387#65306
     end
     object lbl15: TLabel
-      Left = 203
+      Left = 196
       Top = 353
-      Width = 28
+      Width = 36
       Height = 13
-      Caption = #39640#21387':'
+      Caption = #39640#21387#65306
     end
     object lbl16: TLabel
       Left = 32
       Top = 380
-      Width = 16
+      Width = 24
       Height = 13
-      Caption = #26202':'
+      Caption = #26202#65306
     end
     object lbl17: TLabel
-      Left = 81
+      Left = 74
       Top = 380
-      Width = 28
+      Width = 36
       Height = 13
-      Caption = #20302#21387':'
+      Caption = #20302#21387#65306
     end
     object lbl18: TLabel
-      Left = 202
+      Left = 195
       Top = 380
-      Width = 28
+      Width = 36
       Height = 13
-      Caption = #39640#21387':'
+      Caption = #39640#21387#65306
     end
     object lbl19: TLabel
-      Left = 17
+      Left = 32
       Top = 407
-      Width = 69
+      Width = 77
       Height = 13
-      Caption = #34880#31958'(mmol/L):'
+      Caption = #34880#31958'(mmol/L)'#65306
     end
     object lbl20: TLabel
-      Left = 34
+      Left = 32
       Top = 434
-      Width = 47
+      Width = 55
       Height = 13
-      Caption = #20307#37325'(kg):'
+      Caption = #20307#37325'(kg)'#65306
     end
     object lbl21: TLabel
-      Left = 29
+      Left = 32
       Top = 461
-      Width = 52
+      Width = 60
       Height = 13
-      Caption = #27979#23450#26102#38388':'
+      Caption = #27979#23450#26102#38388#65306
     end
     object dtpInDocTime: TDateTimePicker
-      Left = 96
+      Left = 110
       Top = 67
       Width = 159
       Height = 19
       Date = 40945.932047824080000000
       Time = 40945.932047824080000000
-      DateFormat = dfLong
       TabOrder = 0
     end
-    object edt4: TEdit
-      Left = 96
+    object edtTemperature: TEdit
+      Left = 110
       Top = 33
       Width = 156
       Height = 21
+      MaxLength = 5
       TabOrder = 1
+      OnKeyPress = edtTemperatureKeyPress
     end
-    object dtp1: TDateTimePicker
-      Left = 96
+    object dtpHeartTime: TDateTimePicker
+      Left = 111
       Top = 155
       Width = 159
       Height = 19
       Date = 40945.932047824080000000
       Time = 40945.932047824080000000
-      DateFormat = dfLong
       TabOrder = 2
     end
-    object edt1: TEdit
-      Left = 96
+    object edtHeartBeat: TEdit
+      Left = 111
       Top = 121
       Width = 156
       Height = 21
+      MaxLength = 5
+      NumbersOnly = True
       TabOrder = 3
     end
-    object edt2: TEdit
-      Left = 96
+    object edtPee: TEdit
+      Left = 127
       Top = 220
       Width = 156
       Height = 21
+      MaxLength = 5
+      NumbersOnly = True
       TabOrder = 4
     end
-    object edt3: TEdit
-      Left = 96
+    object edtShit: TEdit
+      Left = 127
       Top = 247
       Width = 156
       Height = 21
+      MaxLength = 3
+      NumbersOnly = True
       TabOrder = 5
     end
-    object edt5: TEdit
-      Left = 96
+    object edtDrink: TEdit
+      Left = 127
       Top = 274
       Width = 156
       Height = 21
+      MaxLength = 5
+      NumbersOnly = True
       TabOrder = 6
     end
-    object edt6: TEdit
-      Left = 115
+    object edtBloodLowM: TEdit
+      Left = 111
       Top = 322
       Width = 63
       Height = 21
+      MaxLength = 3
+      NumbersOnly = True
       TabOrder = 7
     end
-    object edt7: TEdit
-      Left = 236
+    object edtBloodHighM: TEdit
+      Left = 229
       Top = 322
       Width = 70
       Height = 21
+      MaxLength = 3
+      NumbersOnly = True
       TabOrder = 8
     end
-    object edt8: TEdit
-      Left = 116
+    object edtBloodLowA: TEdit
+      Left = 111
       Top = 349
       Width = 63
       Height = 21
+      MaxLength = 3
+      NumbersOnly = True
       TabOrder = 9
     end
-    object edt9: TEdit
-      Left = 237
+    object edtBloodHighA: TEdit
+      Left = 230
       Top = 349
       Width = 70
       Height = 21
+      MaxLength = 3
+      NumbersOnly = True
       TabOrder = 10
     end
-    object edt10: TEdit
-      Left = 115
+    object edtBloodLowE: TEdit
+      Left = 111
       Top = 376
       Width = 63
       Height = 21
+      MaxLength = 3
+      NumbersOnly = True
       TabOrder = 11
     end
-    object edt11: TEdit
-      Left = 236
+    object edtBloodHighE: TEdit
+      Left = 229
       Top = 376
       Width = 70
       Height = 21
+      MaxLength = 3
+      NumbersOnly = True
       TabOrder = 12
     end
-    object edt12: TEdit
-      Left = 96
+    object edtBloodSugar: TEdit
+      Left = 111
       Top = 404
       Width = 156
       Height = 21
+      MaxLength = 5
+      NumbersOnly = True
       TabOrder = 13
     end
-    object edt13: TEdit
-      Left = 96
+    object edtWeight: TEdit
+      Left = 111
       Top = 431
       Width = 156
       Height = 21
+      MaxLength = 5
+      NumbersOnly = True
       TabOrder = 14
     end
     object dtp2: TDateTimePicker
-      Left = 96
+      Left = 111
       Top = 458
       Width = 159
       Height = 19
       Date = 40945.932047824080000000
       Time = 40945.932047824080000000
-      DateFormat = dfLong
       TabOrder = 15
     end
   end
@@ -356,7 +377,6 @@ object frmBodyRecord: TfrmBodyRecord
     Height = 40
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 508
     object pnl2: TPanel
       Left = 11
       Top = 2
@@ -371,6 +391,7 @@ object frmBodyRecord: TfrmBodyRecord
         Height = 25
         Caption = #20445#23384
         TabOrder = 0
+        OnClick = btn2Click
       end
       object btn4: TButton
         Left = 272

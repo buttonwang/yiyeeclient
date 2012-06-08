@@ -2,8 +2,8 @@ object FrmMain: TFrmMain
   Left = 686
   Top = 193
   Caption = #20013#22269#32593#32476#20445#20581#38498
-  ClientHeight = 564
-  ClientWidth = 738
+  ClientHeight = 613
+  ClientWidth = 768
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,7 +22,7 @@ object FrmMain: TFrmMain
   object spl1: TSplitter
     Left = 145
     Top = 0
-    Height = 564
+    Height = 613
     ExplicitLeft = 360
     ExplicitTop = 224
     ExplicitHeight = 100
@@ -31,9 +31,17 @@ object FrmMain: TFrmMain
     Left = 0
     Top = 0
     Width = 145
-    Height = 564
+    Height = 613
     Align = alLeft
     TabOrder = 0
+    object Splitter1: TSplitter
+      Left = 1
+      Top = 1
+      Height = 611
+      ExplicitLeft = 392
+      ExplicitTop = 136
+      ExplicitHeight = 100
+    end
     object btnCaseOut: TButton
       Left = 11
       Top = 92
@@ -74,8 +82,8 @@ object FrmMain: TFrmMain
   object ctgrypnlgrp1: TCategoryPanelGroup
     Left = 148
     Top = 0
-    Width = 590
-    Height = 564
+    Width = 620
+    Height = 613
     VertScrollBar.Tracking = True
     Align = alClient
     HeaderFont.Charset = DEFAULT_CHARSET
@@ -86,21 +94,108 @@ object FrmMain: TFrmMain
     HeaderStyle = hsThemed
     TabOrder = 1
     object ctgrypnl3: TCategoryPanel
-      Top = 485
-      Height = 65
+      Top = 400
+      Height = 249
       Caption = #30149#24535#20449#24687
       TabOrder = 0
+      object GridPanel1: TGridPanel
+        Left = 0
+        Top = 0
+        Width = 599
+        Height = 223
+        Align = alClient
+        ColumnCollection = <
+          item
+            Value = 50.000000000000040000
+          end
+          item
+            Value = 49.999999999999960000
+          end>
+        ControlCollection = <
+          item
+            Column = 0
+            Control = lvCase
+            Row = 0
+          end
+          item
+            Column = 1
+            Control = lvBody
+            Row = 0
+          end>
+        RowCollection = <
+          item
+            Value = 100.000000000000000000
+          end
+          item
+          end>
+        TabOrder = 0
+        object lvCase: TListView
+          Left = 1
+          Top = 1
+          Width = 298
+          Height = 221
+          Align = alClient
+          Columns = <
+            item
+              Caption = #35760#24405#26102#38388
+              Width = 90
+            end
+            item
+              Caption = #20027#35201#30151#29366
+              Width = 210
+            end
+            item
+              Caption = 'id'
+              Width = 0
+            end>
+          ReadOnly = True
+          RowSelect = True
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          ViewStyle = vsReport
+          OnDblClick = lvCaseDblClick
+        end
+        object lvBody: TListView
+          Left = 299
+          Top = 1
+          Width = 299
+          Height = 221
+          Align = alClient
+          Anchors = []
+          Columns = <
+            item
+              Caption = #35760#24405#26102#38388
+              Width = 90
+            end
+            item
+              Caption = #20307#24449#35814#24773
+              Width = 210
+            end
+            item
+              Caption = 'id'
+              Width = 0
+            end>
+          ReadOnly = True
+          RowSelect = True
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 1
+          ViewStyle = vsReport
+          OnDblClick = lvBodyDblClick
+        end
+      end
     end
     object ctgrypnl2: TCategoryPanel
-      Top = 147
-      Height = 338
+      Top = 146
+      Height = 254
       Caption = #30149#21382#20449#24687
       TabOrder = 1
       object grdpnl1: TGridPanel
         Left = 0
         Top = 0
-        Width = 586
-        Height = 312
+        Width = 599
+        Height = 228
         Align = alClient
         ColumnCollection = <
           item
@@ -123,13 +218,16 @@ object FrmMain: TFrmMain
         RowCollection = <
           item
             Value = 100.000000000000000000
+          end
+          item
+            SizeStyle = ssAuto
           end>
         TabOrder = 0
         object lvRecord: TListView
           Left = 1
           Top = 1
-          Width = 292
-          Height = 310
+          Width = 298
+          Height = 226
           Align = alClient
           Columns = <
             item
@@ -159,10 +257,10 @@ object FrmMain: TFrmMain
           OnDblClick = lvRecordDblClick
         end
         object lvExam: TListView
-          Left = 293
+          Left = 299
           Top = 1
-          Width = 292
-          Height = 310
+          Width = 299
+          Height = 226
           Align = alClient
           Columns = <
             item
@@ -180,14 +278,14 @@ object FrmMain: TFrmMain
     end
     object ctgrypnl1: TCategoryPanel
       Top = 0
-      Height = 147
+      Height = 146
       Caption = #20010#20154#20449#24687
       TabOrder = 2
       object img1: TImage
         Left = 0
         Top = 0
-        Width = 113
-        Height = 121
+        Width = 100
+        Height = 120
         Align = alLeft
         Picture.Data = {
           0A544A504547496D6167656BDE0B00FFD8FFE000104A46494600010201006000
@@ -24500,13 +24598,12 @@ object FrmMain: TFrmMain
           F2E92DC95B5DB45B5B822793343C16B9E1E74E14073C78F5FFD9}
         Stretch = True
         OnDblClick = img1DblClick
-        ExplicitHeight = 131
       end
       object pnl1: TPanel
-        Left = 113
+        Left = 100
         Top = 0
-        Width = 473
-        Height = 121
+        Width = 499
+        Height = 120
         Align = alClient
         TabOrder = 0
         OnDblClick = img1DblClick
@@ -24597,14 +24694,14 @@ object FrmMain: TFrmMain
           Caption = #26410#35774#32622
         end
         object lbl9: TLabel
-          Left = 300
+          Left = 324
           Top = 51
           Width = 60
           Height = 13
           Caption = #30005#23376#37038#31665#65306
         end
         object lblEmail: TLabel
-          Left = 361
+          Left = 385
           Top = 50
           Width = 36
           Height = 13
@@ -24716,7 +24813,9 @@ object FrmMain: TFrmMain
     end
     object N10: TMenuItem
       Caption = #24110#21161
-      Visible = False
+      object N21: TMenuItem
+        Action = acUpdate
+      end
     end
     object N13: TMenuItem
       Action = actQuit
@@ -24771,6 +24870,10 @@ object FrmMain: TFrmMain
     object actBodyRecord: TAction
       Caption = #20307#24449#24405#20837
       OnExecute = actBodyRecordExecute
+    end
+    object acUpdate: TAction
+      Caption = #36719#20214#26356#26032
+      OnExecute = acUpdateExecute
     end
   end
 end

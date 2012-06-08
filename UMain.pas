@@ -12,6 +12,8 @@ uses
   Winapi.ShellAPI, Vcl.ActnColorMaps,
   UDB, UModels, Vcl.ComCtrls, Vcl.Imaging.jpeg;
 
+const
+  WM_UPDATE= WM_USER+1002;
 type
   TFrmMain = class(TForm)
     pnl2: TPanel;
@@ -81,6 +83,12 @@ type
     N20: TMenuItem;
     actRecord: TAction;
     actBodyRecord: TAction;
+    lvCase: TListView;
+    Splitter1: TSplitter;
+    GridPanel1: TGridPanel;
+    lvBody: TListView;
+    N21: TMenuItem;
+    acUpdate: TAction;
     procedure Button1Click(Sender: TObject);
     procedure actQuitExecute(Sender: TObject);
     procedure actYiyeeExecute(Sender: TObject);
@@ -101,8 +109,12 @@ type
     procedure lvRecordDblClick(Sender: TObject);
     procedure actBodyRecordExecute(Sender: TObject);
     procedure actRecordExecute(Sender: TObject);
+    procedure lvCaseDblClick(Sender: TObject);
+    procedure lvBodyDblClick(Sender: TObject);
+    procedure acUpdateExecute(Sender: TObject);
   private
     { Private declarations }
+    FStyle: Integer;
     procedure  changeSkill(index: Byte);
 
     procedure ShowPatient();
@@ -110,8 +122,12 @@ type
     procedure fillMRecord();
     procedure fillMExamAndLis();
     procedure fillCase();
+    procedure fillBody();
+
+    procedure WMClose(var msg: TMessage);  Message WM_UPDATE;
   public
     { Public declarations }
+
   end;
 
 var
@@ -161,6 +177,7 @@ procedure TFrmMain.actBodyRecordExecute(Sender: TObject);
 begin
   with TfrmBodyRecord.Create(owner) do
   try
+    body_ID:= 0;
     ShowModal;
 
     fill;
@@ -210,6 +227,7 @@ procedure TFrmMain.actRecordExecute(Sender: TObject);
 begin
   with TfrmCaseRecord.Create(owner) do
   try
+    condition_id:= 0;
     ShowModal;
 
     fill;
@@ -233,6 +251,17 @@ begin
   ShellExecute(Handle, 'open', PChar(ApplicationUrl), nil, nil, SW_SHOWNORMAL);
 end;
 
+procedure TFrmMain.acUpdateExecute(Sender: TObject);
+var
+  UpdateFileName: String;
+begin
+  UpdateFileName:= ExtractFilePath(ParamStr(0)) + 'UpDate.exe';
+  if FileExists(UpdateFileName) then
+    ShellExecute(Handle,nil,Pchar(UpdateFileName),Pchar(IntToStr(FStyle)),nil,SW_SHOWNORMAL)
+  else
+    ShowMessage('无法启动更新程序');
+end;
+
 procedure TFrmMain.Button1Click(Sender: TObject);
 begin
   TStyleManager.TrySetStyle('Carbon');
@@ -240,6 +269,7 @@ end;
 
 procedure TFrmMain.changeSkill(index: Byte);
 begin
+  FStyle:= index;
   case index of
     0: TStyleManager.TrySetStyle('Sapphire Kamri');
     1: TStyleManager.TrySetStyle('Carbon');
@@ -253,6 +283,35 @@ begin
   fillMRecord;
   fillMExamAndLis;
   fillCase;
+  fillBody;
+end;
+
+procedure TFrmMain.fillBody;
+var
+  ListItem: TListItem;
+  bodyCase: String;
+begin
+  TBodySign.FindAll;
+  with lvBody do
+  begin
+    Items.Clear;
+    while not Tab.EOF do
+    begin
+      ListItem := Items.Add;
+      bodyCase:= '体温:'+ Tab.FieldByName['temperature'] +
+                 '  心率:'  + Tab.FieldByName['heartbeat'] +
+                 '  小便量:'+ Tab.FieldByName['peeVolume'] +
+                 '  大便次数:'  +Tab.FieldByName['shitTimes'] +
+                 '  饮入量:'+ Tab.FieldByName['drinkVolume'] +
+                 '  血压:'+ Tab.FieldByName['bloodPressureM'] +','+ Tab.FieldByName['bloodPressureA'] +','+Tab.FieldByName['bloodPressureE'] +
+                 '  血糖:'+ Tab.FieldByName['bloodSugar'] +
+                 '  体重:'+ Tab.FieldByName['weight'];
+      ListItem.Caption:= FormatDateTime('yyyy-M-D',StrToDateTime(Tab.FieldByName['Subtime']));
+      ListItem.SubItems.Add(bodyCase);
+      ListItem.SubItems.Add(Tab.FieldByName['id']);
+      Tab.Next;
+    end;
+  end;
 end;
 
 procedure TFrmMain.fillMRecord;
@@ -294,8 +353,21 @@ begin
 end;
 
 procedure TFrmMain.fillCase;
+var ListItem: TListItem;
 begin
-  //
+  TCondition.FindAll;
+  with lvCase do
+  begin
+    Items.Clear;
+    while not Tab.EOF do
+    begin
+      ListItem := Items.Add;
+      ListItem.Caption:= FormatDateTime('yyyy-MM-dd',StrToDateTime(Tab.FieldByName['time']));
+      ListItem.SubItems.Add(Tab.FieldByName['message']);
+      ListItem.SubItems.Add(Tab.FieldByName['id']);
+      Tab.Next;
+    end;
+  end;
 end;
 
 procedure TFrmMain.FormShow(Sender: TObject);
@@ -306,6 +378,38 @@ end;
 procedure TFrmMain.img1DblClick(Sender: TObject);
 begin
   actPatientConfig.Execute();
+end;
+
+procedure TFrmMain.lvBodyDblClick(Sender: TObject);
+begin
+  if lvBody.Selected <> nil then
+  begin
+    with TfrmBodyRecord.Create(owner) do
+    try
+      body_ID:= StrToInt(lvBody.Selected.SubItems[1]);
+      ShowModal;
+
+      fill;
+    finally
+      Free;
+    end;
+  end;
+end;
+
+procedure TFrmMain.lvCaseDblClick(Sender: TObject);
+begin
+  if lvCase.Selected <> nil then
+  begin
+    with TfrmCaseRecord.Create(owner) do
+    try
+      condition_id := StrToInt(lvCase.Selected.SubItems[1]);
+      ShowModal;
+
+      fill;
+    finally
+      Free;
+    end;
+  end;
 end;
 
 procedure TFrmMain.lvRecordColumnClick(Sender: TObject; Column: TListColumn);
@@ -350,6 +454,7 @@ end;
 
 procedure TFrmMain.FormCreate(Sender: TObject);
 begin
+  FStyle:= 0;
   OpenDB();
   InitDB();
   Fill();
@@ -383,6 +488,11 @@ begin
     //      end;
     //    end;
   end;
+end;
+
+procedure TFrmMain.WMClose(var msg: TMessage);
+begin
+  Application.Terminate;
 end;
 
 end.

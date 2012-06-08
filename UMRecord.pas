@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls, System.StrUtils,
-  Vcl.ExtCtrls, Vcl.Grids, Vcl.ValEdit, Vcl.Buttons, Vcl.Samples.Spin;
+  Vcl.ExtCtrls, Vcl.Grids, Vcl.ValEdit, Vcl.Buttons, Vcl.Samples.Spin, SQLiteWrap;
 
 type
   TfrmMedicalRecord = class(TForm)
@@ -24,7 +24,7 @@ type
     tvLisItem: TTreeView;
     pnl1: TPanel;
     grpLisInfo: TGroupBox;
-    mmo2: TMemo;
+    mmoRemark: TMemo;
     btnSave: TButton;
     btnClose: TButton;
     lblTreatment: TLabel;
@@ -35,6 +35,9 @@ type
     chkPositive: TCheckBox;
     edtLisValue: TEdit;
     edtTreatment: TMemo;
+    lbl1: TLabel;
+    lbl2: TLabel;
+    edtLisScope: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
@@ -45,6 +48,8 @@ type
     procedure InitExamAndLis;
     procedure FillExamList;
     procedure FillLisList;
+    procedure FillLisDict;
+    procedure MarkTree(tab: TSQLiteTable; TreeView: TTreeView);
     { Private declarations }
   public
     { Public declarations }
@@ -143,6 +148,8 @@ end;
 procedure TfrmMedicalRecord.FormCreate(Sender: TObject);
 begin
   medId := 0;
+
+  FillLisDict;
 end;
 
 procedure TfrmMedicalRecord.FormShow(Sender: TObject);
@@ -182,6 +189,8 @@ begin
     lblRecord.Caption := '异常项目：';
     lblTreatment.Caption := '体检结果：';
   end;
+
+  pgc1.ActivePageIndex := 0;
   rgType.Enabled := False;
   edtHospital.SetFocus;
 end;
@@ -212,13 +221,25 @@ begin
 end;
 
 procedure TfrmMedicalRecord.tvLisItemClick(Sender: TObject);
+var
+  sql: string;
 begin
   with tvLisItem.Selected do
   begin
     grpLisInfo.Enabled := not HasChildren;
     if not HasChildren then
     begin
-      lblLisName.Caption := Text + ':';
+      lblLisName.Caption := Text;
+      edtLisValue.Text := '';
+      sql := 'Select * from medicallisdict where lis_name =''#lisname''';
+      sql := StringReplace(sql, '#lisname', Text, []);
+      Tab:= db.GetTable(sql);
+      if Not Tab.EOF then
+      begin
+        edtLisScope.Text := tab.FieldByName['scope'];
+        mmoRemark.Lines.Clear;
+        mmoRemark.Lines.Add(tab.FieldByName['remark']);
+      end;
     end;
   end;
 end;
@@ -246,6 +267,49 @@ begin
         FillLisList;
       end;
     end;
+  end;
+end;
+
+procedure TfrmMedicalRecord.FillLisDict;
+var
+  dictTab: TSQLiteTable;
+begin
+  dictTab := db.GetTable('select id, parent_id, lis_name from medicallisdict order by parent_id');
+
+  MarkTree(dictTab, tvLisItem)
+end;
+
+procedure TfrmMedicalRecord.MarkTree(tab: TSQliteTable; TreeView: TTreeView);
+var
+  List: TStringList;
+  Node: TTreeNode;
+  Index: Integer;
+begin
+  TreeView.Items.BeginUpdate;
+  try
+    TreeView.Items.Clear;
+
+    List := TStringList.Create;
+    try
+      List.Sorted := True;
+      while not tab.Eof do
+      begin
+        if tab.FieldByName['parent_id']  = '0' then { ParentID=0，顶层节点 }
+          Node := TreeView.Items.AddChild(nil, tab.FieldByName['lis_name'])
+        else
+        begin
+          Index := List.IndexOf(tab.FieldByName['parent_id']);
+          Node := TreeView.Items.AddChild(TTreeNode(List.Objects[Index]),
+           tab.FieldByName['lis_name']);
+        end;
+        List.AddObject(tab.FieldByName['id'], Node);
+        tab.Next;
+      end;
+    finally
+      List.Free;
+    end;
+  finally
+    TreeView.Items.EndUpdate;
   end;
 end;
 

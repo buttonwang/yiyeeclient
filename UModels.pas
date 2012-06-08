@@ -114,6 +114,78 @@ type
     class procedure FindPositive(); static;
   end;
 
+  //病志模型--基本症状模型
+  TCondition = class(TDomain)
+  public
+    id: Integer;
+    describe: String;
+    remark: String;
+    con_Time: String;
+    subTime: String;
+    diet: String;
+    sleep: String;
+    shit: String;
+    pee: String;
+    spirit: String;
+    dietStr: String;
+    sleepStr: String;
+    shitStr: String;
+    peeStr: String;
+    spiritStr: String;
+
+    procedure Update(); override;
+    function  Insert(): Integer; override;
+    procedure Delete(); override;
+
+    class procedure One(id: Integer); static;
+    class procedure FindAll(); static;
+  end;
+
+  //病志模型--增加症状模型
+  TAddCondition = class(TDomain)
+  public
+    id: Integer;
+    con_id: Integer;
+    add_name: string;
+    add_level: Integer;
+
+    constructor Create();
+
+    function Insert():Integer; override;
+    procedure Delete(); override;
+
+    class function FindAll(conditionId: Integer):Integer ; static;
+  end;
+
+  //体征录入模型
+  TBodySign = class(TDomain)
+  public
+    id: Integer;
+    temperature: String;
+    tempDate: String;
+    heartBeat: String;
+    heartBeatDate: String;
+    peeVolume: String;
+    shitTimes: String;
+    drinkVolume: String;
+    bloodPressureM: String;
+    bloodPressureA: String;
+    bloodPressureE: String;
+    bloodSugar: String;
+    weight: String;
+    bobyTime: String;
+    SubTime: String;
+    constructor Create();
+
+    procedure Update(); override;
+    function  Insert(): Integer; override;
+    procedure Delete(); override;
+
+    class procedure FindAll(); static;
+    class procedure One(id: Integer); static;
+  end;
+
+
   function GetMRTypeName(mrType: Integer): string;
 implementation
 
@@ -473,5 +545,211 @@ begin
 
 end;
 
+
+{ TBobySign }
+
+constructor TBodySign.Create;
+begin
+//
+end;
+
+procedure TBodySign.Delete;
+begin
+//
+end;
+
+class procedure TBodySign.FindAll;
+begin
+  Tab := db.GetTable('select * from diseaseCourse');
+end;
+
+function TBodySign.Insert: Integer;
+var
+  sql: String;
+begin
+  sql := 'insert into diseaseCourse (temperature, temperatureTime, heartbeat, heartbeatTime, peeVolume,shitTimes, ' +
+         'drinkVolume, bloodPressureM, bloodPressureA, bloodPressureE, bloodSugar, weight, time, SubTime) ' +
+         'values (:temperature, :temperatureTime, :heartbeat, :heartbeatTime, :peeVolume, :shitTimes, ' +
+         ':drinkVolume, :bloodPressureM, :bloodPressureA, :bloodPressureE, :bloodSugar, :weight, :time, :SubTime)';
+
+  db.AddParamText(':temperature',temperature);
+  db.AddParamText(':temperatureTime',tempDate );
+  db.AddParamText(':heartbeat',heartbeat);
+  db.AddParamText(':heartbeatTime',heartBeatDate);
+  db.AddParamText(':peeVolume',peeVolume);
+  db.AddParamText(':shitTimes', shitTimes);
+  db.AddParamText(':drinkVolume',drinkVolume);
+  db.AddParamText(':bloodPressureM',bloodPressureM);
+  db.AddParamText(':bloodPressureA',bloodPressureA);
+  db.AddParamText(':bloodPressureE',bloodPressureE );
+  db.AddParamText(':bloodSugar', bloodSugar);
+  db.AddParamText(':weight',weight);
+  db.AddParamText(':time',bobyTime);
+  db.AddParamText(':SubTime',SubTime);
+
+  try
+    db.ExecSQL(sql);
+    id:= db.LastInsertRowID;
+    result := db.LastInsertRowID;
+    ShowMessage('体征录入成功!');
+  except
+    ShowMessage('体征录入失败！');
+    raise;
+  end;
+end;
+
+class procedure TBodySign.One(id: Integer);
+begin
+  Tab:= db.GetTable('Select * from diseaseCourse where id=' + IntToStr(id));
+end;
+
+procedure TBodySign.Update;
+var sql: string;
+begin
+  sql := 'update diseaseCourse set temperature=:temperature, temperatureTime=:temperatureTime, heartbeat=:heartbeat,' +
+         ' heartbeatTime=:heartbeatTime, peeVolume=:peeVolume, shitTimes=:shitTimes, drinkVolume=:drinkVolume, ' +
+         ' bloodPressureM=:bloodPressureM, bloodPressureA=:bloodPressureA, bloodPressureE=:bloodPressureE, bloodSugar=:bloodSugar,' +
+         ' weight=:weight, time=:time, SubTime=:SubTime ' +
+         ' where id = :id';
+
+  db.AddParamInt(':id',id);
+  db.AddParamText(':temperature',temperature);
+  db.AddParamText(':temperatureTime',tempDate );
+  db.AddParamText(':heartbeat',heartbeat);
+  db.AddParamText(':heartbeatTime',heartBeatDate);
+  db.AddParamText(':peeVolume',peeVolume);
+  db.AddParamText(':shitTimes', shitTimes);
+  db.AddParamText(':drinkVolume',drinkVolume);
+  db.AddParamText(':bloodPressureM',bloodPressureM);
+  db.AddParamText(':bloodPressureA',bloodPressureA);
+  db.AddParamText(':bloodPressureE',bloodPressureE );
+  db.AddParamText(':bloodSugar', bloodSugar);
+  db.AddParamText(':weight',weight);
+  db.AddParamText(':time',bobyTime);
+  db.AddParamText(':SubTime',SubTime);
+  try
+    db.ExecSQL(sql);
+    ShowMessage('体征录入成功!');
+  except
+    ShowMessage('体征录入失败！');
+    raise;
+  end;
+end;
+
+{ TCondition }
+
+class procedure TCondition.One(id: Integer);
+begin
+  Tab := db.GetTable('select * from healthcondition where id =' + IntToStr(id));
+end;
+
+procedure TCondition.Delete;
+begin
+
+end;
+
+class procedure TCondition.FindAll();
+begin
+  Tab := db.GetTable('select * from healthcondition order by time desc');
+end;
+
+function TCondition.Insert: Integer;
+var
+  sql: String;
+begin
+  sql := 'insert into healthcondition (subtime,message,time,Remark,diet,pee,shit,sleep,spirit,' +
+         'dietStr,peeStr,shitStr,sleepStr,spiritStr) ' +
+         'values(:subTime,:message,:time,:Remark,:diet,:pee,:shit,:sleep,:spirit,' +
+         ':dietStr,:peeStr,:shitStr,:sleepStr,:spiritStr )';
+
+  subTime:= FormatDateTime('yyyy-MM-dd,h:mm',Now);
+  db.AddParamText(':subTime',subTime);
+  db.AddParamText(':message',describe );
+  db.AddParamText(':time',con_Time);
+  db.AddParamText(':Remark',remark);
+  db.AddParamText(':diet',diet);
+  db.AddParamText(':pee', pee);
+  db.AddParamText(':shit',shit);
+  db.AddParamText(':sleep',sleep);
+  db.AddParamText(':spirit',spirit);
+  db.AddParamText(':dietStr',dietStr );
+  db.AddParamText(':peeStr', peeStr);
+  db.AddParamText(':shitStr',shitStr);
+  db.AddParamText(':sleepStr',sleepStr);
+  db.AddParamText(':spiritStr',spiritStr);
+
+  try
+    db.ExecSQL(sql);
+    id:= db.LastInsertRowID;
+    result := db.LastInsertRowID;
+    ShowMessage('成功保存病志记录!');
+  except
+    ShowMessage('保存病志记录失败！');
+    raise;
+  end;
+end;
+
+procedure TCondition.Update;
+var
+  sql: string;
+begin
+  sql := 'update healthcondition set subtime=:subtime, message=:message, time=:time, Remark=:Remark, diet=:diet, ' +
+         'pee=:pee, shit=:shit, sleep=:sleep, spirit=:spirit, dietStr=:dietStr,' +
+         'peeStr=:peeStr, shitStr=:shitStr, sleepStr=:sleepStr, spiritStr=:spiritStr ' +
+         'where id = :id';
+  subTime:= FormatDateTime('yyyy-MM-dd,h:mm',Now);
+  db.AddParamText(':subTime',subTime);
+  db.AddParamInt(':id',id);
+  db.AddParamText(':message',describe );
+  db.AddParamText(':time',con_Time);
+  db.AddParamText(':Remark',remark);
+  db.AddParamText(':diet',diet);
+  db.AddParamText(':pee', pee);
+  db.AddParamText(':shit',shit);
+  db.AddParamText(':sleep',sleep);
+  db.AddParamText(':spirit',spirit);
+  db.AddParamText(':dietStr',dietStr );
+  db.AddParamText(':peeStr', peeStr);
+  db.AddParamText(':shitStr',shitStr);
+  db.AddParamText(':sleepStr',sleepStr);
+  db.AddParamText(':spiritStr',spiritStr);
+  try
+    db.ExecSQL(sql);
+    ShowMessage('成功保存病志记录!');
+  except
+    ShowMessage('保存病志记录失败！');
+    raise;
+  end;
+end;
+
+
+{ TAddCondition }
+
+constructor TAddCondition.Create;
+begin
+
+end;
+
+procedure TAddCondition.Delete();
+begin
+  db.ExecSQL('Delete from healthconditionadd where condition_id = ' + IntToStr(con_id));
+end;
+
+function TAddCondition.Insert():Integer;
+var
+  sql: String;
+begin
+  sql:= 'Insert into healthconditionadd (name,level,condition_id) values (:name,:level,:condition_id)';
+  db.AddParamText(':name',add_name);
+  db.AddParamInt(':level',add_level);
+  db.AddParamInt(':condition_id',con_id);
+  db.ExecSQL(sql);
+end;
+
+class function TAddCondition.FindAll(conditionId: Integer): Integer;
+begin
+  Result:= db.GetTableValue('select count(*) from healthconditionadd where condition_id =' + IntToStr(conditionId));
+  Tab := db.GetTable('select * from healthconditionadd where condition_id = ' + IntToStr(conditionId));
+end;
 
 end.

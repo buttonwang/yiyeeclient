@@ -3,8 +3,8 @@ object frmPatientEdit: TfrmPatientEdit
   Top = 0
   BorderStyle = bsSingle
   Caption = #20010#20154#20449#24687#20462#25913
-  ClientHeight = 189
-  ClientWidth = 585
+  ClientHeight = 214
+  ClientWidth = 587
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,32 +17,35 @@ object frmPatientEdit: TfrmPatientEdit
   PixelsPerInch = 96
   TextHeight = 13
   object pnl1: TPanel
-    Left = 124
+    Left = 122
     Top = 0
-    Width = 461
-    Height = 189
+    Width = 465
+    Height = 214
     Align = alClient
     TabOrder = 1
+    ExplicitLeft = 124
+    ExplicitWidth = 461
+    ExplicitHeight = 189
     object lbl1: TLabel
       Left = 29
-      Top = 21
+      Top = 36
       Width = 36
       Height = 13
       Caption = #22995#21517#65306
     end
     object lbl2: TLabel
       Left = 157
-      Top = 21
+      Top = 36
       Width = 36
       Height = 13
       Caption = #24615#21035#65306
     end
     object lbl3: TLabel
-      Left = 298
-      Top = 21
-      Width = 36
+      Left = 277
+      Top = 35
+      Width = 60
       Height = 13
-      Caption = #24180#40836#65306
+      Caption = #20986#29983#26085#26399#65306
     end
     object lbl5: TLabel
       Left = 29
@@ -54,42 +57,42 @@ object frmPatientEdit: TfrmPatientEdit
     end
     object lbl4: TLabel
       Left = 29
-      Top = 53
+      Top = 68
       Width = 36
       Height = 13
       Caption = #30005#35805#65306
     end
     object lbl7: TLabel
       Left = 157
-      Top = 53
+      Top = 68
       Width = 36
       Height = 13
       Caption = #25163#26426#65306
     end
     object lbl9: TLabel
-      Left = 274
-      Top = 53
+      Left = 277
+      Top = 68
       Width = 60
       Height = 13
       Caption = #30005#23376#37038#31665#65306
     end
     object lbl11: TLabel
       Left = 29
-      Top = 114
+      Top = 129
       Width = 36
       Height = 13
       Caption = #20303#22336#65306
     end
     object lbl6: TLabel
       Left = 29
-      Top = 86
+      Top = 101
       Width = 36
       Height = 13
       Caption = #34880#22411#65306
     end
     object btnSave: TButton
       Left = 277
-      Top = 146
+      Top = 175
       Width = 75
       Height = 25
       Caption = #20445#23384
@@ -98,7 +101,7 @@ object frmPatientEdit: TfrmPatientEdit
     end
     object btnClose: TButton
       Left = 373
-      Top = 146
+      Top = 175
       Width = 75
       Height = 25
       Caption = #20851#38381
@@ -107,7 +110,7 @@ object frmPatientEdit: TfrmPatientEdit
     end
     object cbbSex: TComboBox
       Left = 188
-      Top = 17
+      Top = 32
       Width = 80
       Height = 21
       ItemIndex = 0
@@ -119,7 +122,7 @@ object frmPatientEdit: TfrmPatientEdit
     end
     object dtpBirthday: TDateTimePicker
       Left = 336
-      Top = 17
+      Top = 32
       Width = 110
       Height = 21
       Date = 40945.020375405090000000
@@ -128,21 +131,21 @@ object frmPatientEdit: TfrmPatientEdit
     end
     object edtTel: TEdit
       Left = 63
-      Top = 49
+      Top = 64
       Width = 80
       Height = 21
       TabOrder = 3
     end
     object edtMobile: TEdit
       Left = 188
-      Top = 49
+      Top = 64
       Width = 80
       Height = 21
       TabOrder = 4
     end
     object edtEmail: TEdit
       Left = 336
-      Top = 49
+      Top = 64
       Width = 110
       Height = 21
       TabOrder = 5
@@ -157,21 +160,21 @@ object frmPatientEdit: TfrmPatientEdit
     end
     object edtAddress: TEdit
       Left = 63
-      Top = 110
+      Top = 125
       Width = 383
       Height = 21
       TabOrder = 7
     end
     object edtName: TEdit
       Left = 63
-      Top = 17
+      Top = 32
       Width = 80
       Height = 21
       TabOrder = 0
     end
     object cbbblood: TComboBox
       Left = 63
-      Top = 82
+      Top = 96
       Width = 205
       Height = 21
       TabOrder = 6
@@ -186,15 +189,16 @@ object frmPatientEdit: TfrmPatientEdit
   object pnl2: TPanel
     Left = 0
     Top = 0
-    Width = 124
-    Height = 189
+    Width = 122
+    Height = 214
     Align = alLeft
     TabOrder = 0
+    ExplicitHeight = 204
     object img1: TImage
       Left = 1
       Top = 1
-      Width = 122
-      Height = 129
+      Width = 120
+      Height = 144
       Align = alTop
       Picture.Data = {
         0A544A504547496D6167656BDE0B00FFD8FFE000104A46494600010201006000
@@ -24507,11 +24511,17 @@ object frmPatientEdit: TfrmPatientEdit
         F2E92DC95B5DB45B5B822793343C16B9E1E74E14073C78F5FFD9}
       Stretch = True
       OnDblClick = img1DblClick
-      ExplicitWidth = 147
+    end
+    object Label1: TLabel
+      Left = 11
+      Top = 155
+      Width = 102
+      Height = 13
+      Caption = #22836#20687#22823#23567#65306'500*600'
     end
     object btnChooseFile: TButton
       Left = 24
-      Top = 146
+      Top = 175
       Width = 75
       Height = 25
       Caption = #35774#32622#22836#20687

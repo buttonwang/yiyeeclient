@@ -35,6 +35,7 @@ type
     dlgOpenPic1: TOpenPictureDialog;
     lbl6: TLabel;
     cbbblood: TComboBox;
+    Label1: TLabel;
     procedure btnCloseClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
@@ -94,7 +95,39 @@ begin
 end;
 
 procedure TfrmPatientEdit.btnSaveClick(Sender: TObject);
+var
+  vMailTemp: String;
 begin
+  if Trim(edtMobile.Text) <> '' then
+  begin
+    if (Length(edtMobile.Text) <> 11) or
+       (copy(edtMobile.Text, 1, 2) <> '13') and
+       (copy(edtMobile.Text, 1, 2) <> '15') and
+       (copy(edtMobile.Text, 1, 2) <> '18') then
+    begin
+      ShowMessage('不是有效的手机号');
+      Exit;
+    end;
+  end;
+
+
+
+  if Trim(edtEmail.Text) <> '' then
+  begin
+    vMailTemp:= Copy(edtEmail.Text,Pos('@',edtEmail.Text) + 1,Length(edtEmail.Text));
+    if not (
+            (Pos('@',edtEmail.Text) > 1)  and
+            (not (pos('@',vMailTemp) > 0)) and
+            (Pos('.',vMailTemp) > 1) and
+            (vMailTemp[Length(vMailTemp)] <> '.')
+           ) then
+    begin
+      ShowMessage('邮箱格式不正确');
+      Exit;
+    end;
+  end;
+
+
   with patient do
   begin
     name := edtName.Text;
